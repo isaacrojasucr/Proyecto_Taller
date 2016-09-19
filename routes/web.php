@@ -18,18 +18,20 @@ Route::get('/', function () {
 
 Route::get('Usuarios','usuarioController@index');
 
-//Route::get('Usuarios/crear','usuarioController@crear');
-
-//Route::get('Usuarios/buscar/{cedula}', 'usuarioController@buscar');
-
-//Route::get('Usuarios/guardar', 'usuarioController@guardar');
+Route::get('Vehiculos','vehiculoController@index');
 
 
-//Route::get('Usuarios/editar/{cedula}', 'usuarioController@Editar');
 
-
+//acceso a los recursos usuarios
 Route::resource('Usuarios','usuarioController');
 //una nueva ruta para eliminar registros con el metodo get
 Route::get('Usuarios/eliminar/{cedula}', ['as' => 'Usuarios/eliminar', 'uses'=>'usuarioController@eliminar']);
 //ruta para realizar busqueda de registros.
 Route::post('Usuarios/buscar', ['as' => 'Usuarios/buscar', 'uses'=>'usuarioController@buscar']);
+
+//acceso a los recursos usuarios
+Route::resource('Vehiculos','vehiculoController');
+//una nueva ruta para eliminar registros con el metodo get
+Route::get('Vehiculos/eliminar/{placa}', ['as' => 'Vehiculos/eliminar', 'uses'=>'vehiculoController@eliminar']);
+//ruta para realizar busqueda de registros.
+Route::post('Vehiculos/buscar', ['as' => 'Vehiculos/buscar', 'uses'=>'vehiculoController@buscar']);

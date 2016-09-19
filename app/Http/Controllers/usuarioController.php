@@ -65,7 +65,7 @@ class usuarioController extends Controller
 
             $usuario= User::find($request->id);
             $usuario->habilitado = 1;
-            $usuario->email= 'nothing';
+            $usuario->email= null;
             $usuario->name = $request->nombre;
             $usuario->apellidos = $request->apellido;
             $usuario->puesto = $request->puesto;
