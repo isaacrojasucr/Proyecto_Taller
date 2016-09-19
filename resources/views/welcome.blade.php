@@ -84,7 +84,7 @@
                 <div class="links">
                     <a href="Usuarios">Usuarios</a>
                     <a href="Vehiculos">Vehiculos</a>
-                    <a href="#">Inventario</a>
+                    <a href="Repuestos">Inventario</a>
                     <a href="#">faltantes</a>
                 </div>
             </div>

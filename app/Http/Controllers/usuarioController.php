@@ -15,7 +15,7 @@ class usuarioController extends Controller
     public function store(Request $request) {
         $usuario = new User();
         $usuario->habilitado = 1;
-        $usuario->email= 'nothing';
+        $usuario->email= null;
         $usuario->name = $request->nombre;
         $usuario->apellidos = $request->apellido;
         $usuario->puesto = $request->puesto;
