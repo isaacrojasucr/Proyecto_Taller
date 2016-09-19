@@ -45,15 +45,15 @@ class vehiculoController extends Controller
 
     }
 
-    public function edit($placa){
-        $vehiculo = User::find($placa);
+    public function edit($id){
+        $vehiculo = User::find($id);
         return \View::make('ActualizarVehiculo',compact('vehiculo'));
 
     }
 
     public function buscar(Request $request){
 
-        $vehiculos = User::where('placa','like','%'.$request->placa.'%')->get();
+        $vehiculos = Vehiculo::where('placa','like','%'.$request->placa.'%')->get();
         return \View::make('Vehiculos', compact('vehiculos'));
 
     }

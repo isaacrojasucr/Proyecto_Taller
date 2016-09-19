@@ -68,8 +68,8 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
+                    <a href="{{ url('/login') }}">Iniciar Sesion</a>
+                    <a href="{{ url('/register') }}">Registrarse</a>
                 </div>
             @endif
 
@@ -83,7 +83,7 @@
 
                 <div class="links">
                     <a href="Usuarios">Usuarios</a>
-                    <a href="#">Vehiculos</a>
+                    <a href="Vehiculos">Vehiculos</a>
                     <a href="#">Inventario</a>
                     <a href="#">faltantes</a>
                 </div>
