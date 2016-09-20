@@ -15,20 +15,20 @@
                 {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('contraseña', 'Contraseña') !!}
-                {!! Form::number('contrasena', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                {!! Form::label('cantidad', 'Cantidad') !!}
+                {!! Form::number('cantidad', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('full_name', 'Nombre') !!}
-                {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                {!! Form::label('full_name', 'Vida Util') !!}
+                {!! Form::number('vida_util', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('Apellidos', 'Apellidos') !!}
-                {!! Form::text('apellido', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                {!! Form::label('inicial ', 'Km Inicial') !!}
+                {!! Form::number('km_incial', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('puesto', 'Puesto') !!}
-                {!! Form::select('size', array('2' => 'Mecanico(a)', '3' => 'Chofer'), '3') !!}
+                {!! Form::label('vehiculo', 'Vehiculo' ) !!}
+                {!! Form::select('size', $placas, null, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::submit('Enviar', ['class' => 'btn btn-success ' ] ) !!}

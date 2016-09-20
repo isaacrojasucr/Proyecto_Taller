@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('puesto', 'Puesto') !!}
-                    {!! Form::select('size', array('2' => 'Mecanico(a)', '3' => 'Chofer'), '3') !!}
+                    {!! Form::select('size', array('2' => 'Mecanico(a)', '3' => 'Chofer'),null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Enviar', ['class' => 'btn btn-success ' ] ) !!}

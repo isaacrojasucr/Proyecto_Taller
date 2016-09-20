@@ -22,6 +22,8 @@ Route::get('Vehiculos','vehiculoController@index');
 
 Route::get('Repuestos','RepuestosController@index');
 
+//Route::get('NuevoRepuesto', 'RepuestosController@vehiculos');
+
 
 //acceso a los recursos usuarios
 Route::resource('Usuarios','usuarioController');
