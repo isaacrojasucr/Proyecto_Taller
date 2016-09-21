@@ -77,7 +77,7 @@
                 <div class="title m-b-md">
                     <img src="http://www.so.ucr.ac.cr/ucrfm/sites/default/files/logo-ucrso.png">
                     <br>
-                    Bienvenido(a) al modulo de Administración
+                    Bienvenido(a) al módulo de Administración
                     <br>
                 </div>
 

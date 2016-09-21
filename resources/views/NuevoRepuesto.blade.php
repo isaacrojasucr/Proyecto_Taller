@@ -27,10 +27,6 @@
                 {!! Form::number('km_incial', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('vehiculo', 'Vehiculo' ) !!}
-                {!! Form::select('size', $placas, null, ['class' => 'form-control']) !!}
-            </div>
-            <div class="form-group">
                 {!! Form::submit('Enviar', ['class' => 'btn btn-success ' ] ) !!}
             </div>
             {!! Form::close() !!}

@@ -19,9 +19,6 @@ class CreateRepuestosTable extends Migration
             $table->integer('vida_util');
             $table->bigInteger('km_inicial');
             $table->smallInteger('cantidad');
-            $table->integer('placa_vehiculo')->unsigned();
-
-            $table->foreign('placa_vehiculo')->references('placa')->on('vehiculos');
         });
     }
 

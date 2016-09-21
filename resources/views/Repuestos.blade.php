@@ -22,7 +22,6 @@
         <table class="table table-condensed table-striped table-bordered">
             <thead>
             <tr>
-                <th>Vehiculo</th>
                 <th>Nombre</th>
                 <th>Vida Util</th>
                 <th>Km Inicial</th>
@@ -34,7 +33,6 @@
             <tbody>
             @foreach($respuestos as $respuesto)
                     <tr>
-                        <td>{{ $respuesto->placa_vehiculo }}</td>
                         <td>{{ $respuesto->nombre }}</td>
                         <td>{{ $respuesto->vida_util }}</td>
                         <td>{{ $respuesto->km_inicial }}</td>
