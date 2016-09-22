@@ -15,17 +15,23 @@ class usuarioController extends Controller
     public function store(Request $request) {
         $usuario = new User();
         $usuario->habilitado = 1;
-        $usuario->email= null;
+        $usuario->cedula= $request->cedula;
+        $usuario->email= $request->email;
         $usuario->name = $request->nombre;
         $usuario->apellidos = $request->apellido;
         $usuario->puesto = $request->puesto;
-        $usuario->password = $request->contrasena;
+        $usuario->password = Hash::make($request->contrasena);
 
         $usuario->save();
 
         return redirect(Usuarios);
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $usuarios = User::all();
 

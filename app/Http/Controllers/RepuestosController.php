@@ -10,6 +10,11 @@ use phpDocumentor\Reflection\Types\Array_;
 
 class RepuestosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     public function store(Request $request) {
         $repuesto = new repuesto();

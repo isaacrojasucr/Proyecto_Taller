@@ -9,6 +9,12 @@ use App\Http\Requests;
 
 class vehiculoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     //
     public function store(Request $request) {
         $vehiculo = new vehiculo();
