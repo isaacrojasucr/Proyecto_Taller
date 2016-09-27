@@ -83,4 +83,12 @@ class RepuestosController extends Controller
     }
 
 
+    public function faltantes(){
+
+        $faltantes = repuesto::where('cantidad', '=', 0)->get();
+        
+        return view('Faltantes', compact('faltantes'));
+
+    }
+
 }

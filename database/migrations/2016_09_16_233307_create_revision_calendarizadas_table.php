@@ -14,14 +14,11 @@ class CreateRevisionCalendarizadasTable extends Migration
     public function up()
     {
         Schema::create('revision_calendarizadas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('nombre',50);
             $table->bigInteger('km_inicial');
             $table->bigInteger('km_revision');
-            $table->string('detaller', 1000);
-            $table->integer('placa_vehiculo')->unsigned();
-            
-            $table->foreign('placa_vehiculo')->references('placa')->on('vehiculos');
+            $table->string('detalle', 10000);
         });
     }
 

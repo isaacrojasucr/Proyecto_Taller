@@ -27,6 +27,7 @@ Route::get('/', function () {
 
     Route::get('Repuestos', 'RepuestosController@index');
 
+    Route::get('Faltantes', 'RepuestosController@faltantes');
 
     Route::resource('Oficina', 'oficinaController');
 
@@ -52,6 +53,9 @@ Route::get('/', function () {
     Route::post('Repuestos/buscar', ['as' => 'Repuestos/buscar', 'uses' => 'RepuestosController@buscar']);
 
 
+    
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
