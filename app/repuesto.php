@@ -12,6 +12,8 @@ class repuesto extends Model
     ];
 
     protected $table = 'repuestos';
+    
+    public $timestamps = false;
 
 
 }

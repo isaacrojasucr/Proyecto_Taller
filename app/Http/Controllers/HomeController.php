@@ -23,6 +23,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect('Oficina');
+
+        return view('home');
+
+    }
+
+    public function oficina()
+    {
+
+        return view('welcome');
+
+    }
+    
+    public function otro (){
+
     }
 }

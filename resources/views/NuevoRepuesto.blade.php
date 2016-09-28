@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('inicial ', 'Km Inicial') !!}
-                {!! Form::number('km_incial', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                {!! Form::number('km_inicial', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
             <div class="form-group">
                 {!! Form::submit('Enviar', ['class' => 'btn btn-success ' ] ) !!}

@@ -19,6 +19,10 @@
                     {!! Form::password('contrasena', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
+                    {!! Form::label('full_name', 'Correo Institucional') !!}
+                    {!! Form::email('correo', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                </div>
+                <div class="form-group">
                     {!! Form::label('full_name', 'Nombre') !!}
                     {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </div>
@@ -28,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('puesto', 'Puesto') !!}
-                    {!! Form::select('size', array('2' => 'Mecanico(a)', '3' => 'Chofer'),null, ['class' => 'form-control']) !!}
+                    {!! Form::select('puesto', array('2' => 'Mecanico(a)', '3' => 'Chofer'),null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::submit('Enviar', ['class' => 'btn btn-success ' ] ) !!}

@@ -17,5 +17,7 @@ class vehiculo extends Model
     public $incrementing = false;
 
     public $table = 'vehiculos';
+
+    public $timestamps = false;
     
 }

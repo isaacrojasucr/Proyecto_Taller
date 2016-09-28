@@ -52,7 +52,7 @@ class vehiculoController extends Controller
     }
 
     public function edit($id){
-        $vehiculo = User::find($id);
+        $vehiculo = Vehiculo::find($id);
         return \View::make('ActualizarVehiculo',compact('vehiculo'));
 
     }
@@ -64,9 +64,9 @@ class vehiculoController extends Controller
 
     }
 
-    public function update (Request $request){
+    public function update ($placa, Request $request){
 
-        $vehiculo = vehiculo::find($request->placa);
+        $vehiculo = vehiculo::find($placa);
         $vehiculo->habilitado = 1;
         $vehiculo->placa = $request->placa;
         $vehiculo->modelo = $request->modelo;
@@ -75,7 +75,9 @@ class vehiculoController extends Controller
 
         $vehiculo->save();
 
-        return redirect(Vehiculos);
+        $vehiculos = vehiculo::all();
+
+        return view('Vehiculos', compact('vehiculos'));
 
     }
 }

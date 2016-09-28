@@ -14,7 +14,7 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 
@@ -29,7 +29,7 @@ Route::get('/', function () {
 
     Route::get('Faltantes', 'RepuestosController@faltantes');
 
-    Route::resource('Oficina', 'oficinaController');
+    Route::resource('Oficina', 'HomeController@oficina');
 
 //acceso a los recursos usuarios
     Route::resource('Usuarios', 'usuarioController');
@@ -58,4 +58,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');
+Route::get('home', 'HomeController@index');
+
+Route::get('otro', 'HomeController@otros');

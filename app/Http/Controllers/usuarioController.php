@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Hash;
 use App\Http\Requests;
 use App\User;
 
@@ -16,15 +16,15 @@ class usuarioController extends Controller
         $usuario = new User();
         $usuario->habilitado = 1;
         $usuario->cedula= $request->cedula;
-        $usuario->email= $request->email;
+        $usuario->email= $request->correo;
         $usuario->name = $request->nombre;
         $usuario->apellidos = $request->apellido;
         $usuario->puesto = $request->puesto;
-        $usuario->password = Hash::make($request->contrasena);
-
+        $contrasena = $request->contrasena;
+        $usuario->password = Hash::make($contrasena);
         $usuario->save();
 
-        return redirect(Usuarios);
+        return redirect('Usuarios');
     }
 
     public function __construct()
@@ -48,7 +48,7 @@ class usuarioController extends Controller
         $usuario = User::find($id);
         $usuario->habilitado = 0;
 
-        $usuario.save();
+        $usuario->save();
 
         return redirect('Usuarios');
         
@@ -56,7 +56,7 @@ class usuarioController extends Controller
 
     public function edit($id){
         $usuario = User::find($id);
-        return \View::make('ActualizarUsuario',compact('usuario'));
+        return view('ActualizarUsuario',compact('usuario'));
 
     }
 
@@ -67,17 +67,17 @@ class usuarioController extends Controller
 
     }
 
-    public function update (Request $request){
+    public function update ($id, Request $request){
 
-            $usuario= User::find($request->id);
+            $usuario = User::find($id);
             $usuario->habilitado = 1;
-            $usuario->email= null;
-            $usuario->name = $request->nombre;
-            $usuario->apellidos = $request->apellido;
+            $usuario->email= $request->email;
+            $usuario->name = $request->name;
+            $usuario->apellidos = $request->apellidos;
             $usuario->puesto = $request->puesto;
-            $usuario->password = $request->contrasena;
+            $usuario->password = Hash::make($request->password);
 
-        $usuario->save();
+            $usuario->save();
 
             return redirect('Usuarios');
 

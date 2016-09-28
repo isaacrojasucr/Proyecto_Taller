@@ -68,9 +68,9 @@ class RepuestosController extends Controller
 
     }
 
-    public function update (Request $request){
+    public function update ($id, Request $request){
 
-        $repuesto= repuesto::find($request->id);
+        $repuesto= repuesto::find($id);
         $repuesto->cantidad = $request->cantidad;
         $repuesto->vida_util= $request->vida_util;
         $repuesto->nombre = $request->nombre;
@@ -78,7 +78,7 @@ class RepuestosController extends Controller
 
         $repuesto->save();
 
-        return redirect('Usuarios');
+        return redirect('Repuestos');
 
     }
 
