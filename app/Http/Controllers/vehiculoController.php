@@ -6,6 +6,7 @@ use App\vehiculo;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class vehiculoController extends Controller
 {
@@ -79,5 +80,16 @@ class vehiculoController extends Controller
 
         return view('Vehiculos', compact('vehiculos'));
 
+    }
+    
+    public function reportar ( Request $request){
+        $vehiculo = vehiculo::find($request->placa);
+        
+        $vehiculo->km_total = $request->km_total;
+        
+        $vehiculo->save();
+        
+        Return redirect('home/exit');
+        
     }
 }

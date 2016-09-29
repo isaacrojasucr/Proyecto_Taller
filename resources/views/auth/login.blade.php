@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading" align="center"> <img src="http://www.so.ucr.ac.cr/ucrfm/sites/default/files/logo-ucrso.png" align-><br></div>
+                <div class="panel-heading" align="center"> <img src="http://www.so.ucr.ac.cr/ucrfm/sites/default/files/logo-ucrso.png" ><br></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}

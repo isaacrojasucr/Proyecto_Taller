@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -48,13 +48,18 @@
                     @else
 
                         <ul class="nav navbar-nav">
+                            @if(Auth::user()->puesto != 3)
+                            @if(Auth::user()->puesto == 1)
                             <li class="active"><a href="/Proyecto_Taller/public/Oficina">Inicio</a></li>
                             <li><a href="/Proyecto_Taller/public/Usuarios">Usuarios</a></li>
+                            @endif
                             <li><a href="Vehiculos">Vehiculos</a></li>
                             <li><a href="/Proyecto_Taller/public/Repuestos">Respuestos</a> </li>
+                            @if(Auth::user()->puesto == 1)
                             <li><a href="/Proyecto_Taller/public/Faltantes">Faltantes</a></li>
+                            @endif
                             <li><a href="#">Revisiones</a></li>
-
+                            @endif
                             <li>
                                 <a href="{{ url('/logout') }}"
                                    onclick="event.preventDefault();

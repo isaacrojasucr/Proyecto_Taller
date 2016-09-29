@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\vehiculo;
 
 class HomeController extends Controller
 {
@@ -23,8 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        return view('home');
+        $vehiculos = vehiculo::all();
+        $placas = collect([]);
+        foreach ($vehiculos as $vehiculo){
+            $placas->put($vehiculo->placa, $vehiculo->placa);
+        }
+        return view('home', compact('placas'));
 
     }
 
@@ -35,7 +40,7 @@ class HomeController extends Controller
 
     }
     
-    public function otro (){
-
+    public function salida (){
+        return view('salida');
     }
 }

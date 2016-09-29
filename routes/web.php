@@ -45,6 +45,8 @@ Route::get('/', function () {
 //ruta para realizar busqueda de registros.
     Route::post('Vehiculos/buscar', ['as' => 'Vehiculos/buscar', 'uses' => 'vehiculoController@buscar']);
 
+    Route::post('Vehiculos/reportar', ['as' => 'Vehiculos/reportar', 'uses' => 'vehiculoController@reportar']);
+
 //acceso a los recursos vehiculos
     Route::resource('Repuestos', 'RepuestosController');
 //una nueva ruta para eliminar registros con el metodo get
@@ -59,5 +61,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('home', 'HomeController@index');
+Route::get('home/exit', 'homeController@salida');
 
 Route::get('otro', 'HomeController@otros');
