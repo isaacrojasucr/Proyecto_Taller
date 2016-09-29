@@ -17,6 +17,8 @@
 
                                         {!! Form::open(['route' => 'Vehiculos/reportar', 'method' => 'post', 'novalidate', 'class' => 'form-inline']) !!}
 
+                                        {!! Form::hidden('id', Auth::user()->id) !!}
+                                        
                                         <div class="form-group">
                                             {!! Form::label('placa', 'Placa') !!}
                                             <br>

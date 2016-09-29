@@ -17,7 +17,6 @@ class CreateRepuestosTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('nombre', 50);
             $table->integer('vida_util');
-            $table->bigInteger('km_inicial');
             $table->smallInteger('cantidad');
         });
     }

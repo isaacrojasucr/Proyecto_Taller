@@ -16,6 +16,7 @@ class CreateRevisionCalendarizadasTable extends Migration
         Schema::create('revision_calendarizadas', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('nombre',50);
+            $table->smallInteger('estado');
             $table->bigInteger('km_inicial');
             $table->bigInteger('km_revision');
             $table->string('detalle', 10000);

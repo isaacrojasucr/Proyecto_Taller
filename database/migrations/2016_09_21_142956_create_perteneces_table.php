@@ -15,12 +15,13 @@ class CreatePertenecesTable extends Migration
     {
         Schema::create('perteneces', function (Blueprint $table) {
 
-            $table->integer('ir')->unsigned();
-            $table->integer('pv')->unsigned();
+            $table->integer('id_repuesto')->unsigned();
+            $table->integer('placa_vehiculo')->unsigned();
+            $table->bigInteger('km_inicial');
 
 
-            $table->foreign('ir')->references('id')->on('repuestos');
-            $table->foreign('pv')->references('placa')->on('vehiculos');
+            $table->foreign('id_repuesto')->references('id')->on('repuestos');
+            $table->foreign('placa_vehiculo')->references('placa')->on('vehiculos');
         });
     }
 

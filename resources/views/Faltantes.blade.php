@@ -15,7 +15,6 @@
             <tr>
                 <th>Nombre</th>
                 <th>Vida Util</th>
-                <th>Km Inicial</th>
                 <th>Cantidad</th>
 
             </tr>
@@ -25,7 +24,6 @@
                 <tr>
                     <td>{{ $faltante->nombre }}</td>
                     <td>{{ $faltante->vida_util }}</td>
-                    <td>{{ $faltante->km_inicial }}</td>
                     <td>{{ $faltante->cantidad }}</td>
 
                 </tr>

@@ -21,7 +21,6 @@ class RepuestosController extends Controller
         $repuesto->cantidad = $request->cantidad;
         $repuesto->vida_util= $request->vida_util;
         $repuesto->nombre = $request->nombre;
-        $repuesto->km_inicial = $request->apellido;
 
         $repuesto->save();
 
@@ -74,7 +73,6 @@ class RepuestosController extends Controller
         $repuesto->cantidad = $request->cantidad;
         $repuesto->vida_util= $request->vida_util;
         $repuesto->nombre = $request->nombre;
-        $repuesto->km_inicial = $request->apellido;
 
         $repuesto->save();
 

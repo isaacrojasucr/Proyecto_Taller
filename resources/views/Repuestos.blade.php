@@ -20,7 +20,6 @@
             <tr>
                 <th>Nombre</th>
                 <th>Vida Util</th>
-                <th>Km Inicial</th>
                 <th>Cantidad</th>
                 <th>Action</th>
 
@@ -31,7 +30,6 @@
                     <tr>
                         <td>{{ $respuesto->nombre }}</td>
                         <td>{{ $respuesto->vida_util }}</td>
-                        <td>{{ $respuesto->km_inicial }}</td>
                         <td>{{ $respuesto->cantidad }}</td>
                         <td>
                             <a class="btn btn-primary btn-xs" href="{{ route('Repuestos.edit',['id' => $respuesto->id] )}}" >Editar</a>
