@@ -60,7 +60,7 @@ Route::get('/', function () {
 //acceso a los recursos vehiculos
 Route::resource('Revisiones', 'RevisionesController');
 
-Route::get('Revisiones/deleted/{placa}/{id}', ['as' => 'Revisiones/deleted', 'uses' => 'RevisionesController@eliminar']);
+Route::get('Revisiones/deleted/{placa}/{id}', ['as' => 'Revisiones/deleted', 'uses' => 'RevisionesController@borrar']);
 
 Route::get('Revisiones/todas/{id}', ['as'=> 'Revisiones/todas','uses' => 'RevisionesController@todas']);
 //ruta para realizar busqueda de registros.
@@ -71,6 +71,10 @@ Route::get('Revisiones/index',['as' => 'Revisiones/index', 'uses' => 'Revisiones
 Route::get('Revisiones/editar/{placa}/{id}',['as'=>'Revisiones/editar','uses' => 'RevisionesController@editar']);
 
 Route::get('Revisiones/nuevo/{placa}',['as'=>'Revisiones/nuevo', 'uses' => 'RevisionesController@nuevo']);
+
+Route::post('Revisiones/guardar', ['as' => 'Revisiones/guardar', 'uses' => 'RevisionesController@guardar']);
+
+Route::get('Revisiones/ver/{id}/{placa}', ['as' => 'Revisiones/ver', 'uses' => 'RevisionesController@ver']);
 
 
 Auth::routes();

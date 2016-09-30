@@ -29,7 +29,9 @@
                 </thead>
                 <tbody>
                 @foreach($vehiculos as $vehiculo)
+
                     <tr>
+
                         <td>{{ $vehiculo->placa }}</td>
                         <td>{{ $vehiculo->modelo }}</td>
                         <td>

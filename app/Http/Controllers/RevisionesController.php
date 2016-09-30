@@ -28,9 +28,8 @@ class RevisionesController extends Controller
             ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
             ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
             ->where('vehiculos.placa','=',$placa)
-            ->select('revision_calendarizadas.id','revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
+            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
             ->get();
-
         return view('VerRevisiones', compact('placa','revisiones'));
     }
 
@@ -45,17 +44,16 @@ class RevisionesController extends Controller
 
     }
 
-
     public function guardar (Request $request ) {
         $revision =  new revision_calendarizada();
 
         $vehiculo = vehiculo::find($request->placa);
 
         $revision->nombre = $request->nombre;
-        $revision->detalle = $request->datalle;
+        $revision->detalle = $request->detalle;
         $revision->km_revision = $request->km_revision;
         $revision->km_inicial = $vehiculo->km_total;
-
+        $revision->estado = 1;
         $revision->save();
 
         $id = \DB::table('revision_calendarizadas')->max('id');
@@ -63,7 +61,6 @@ class RevisionesController extends Controller
         $somete = new somete();
         $somete->placa_vehiculo = $vehiculo->placa;
         $somete->id_revision = $id;
-        
         $somete->save();
 
         $placa = $vehiculo->placa;
@@ -72,11 +69,54 @@ class RevisionesController extends Controller
             ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
             ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
             ->where('vehiculos.placa','=',$placa)
-            ->select('revision_calendarizadas.id','revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
+            ->select('revision_calendarizadas.estado','revision_calendarizadas.id','revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
             ->get();
 
         return view('VerRevisiones', compact('placa','revisiones'));
     }
     
+    public function borrar ($placa,$id) {
+        $somete = somete::where('id_revision','=',$id);
+        $somete->delete();
+
+        $revision = revision_calendarizada::find($id);
+        $revision->delete();
+
+        $revisiones = \DB::table('vehiculos')
+            ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
+            ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
+            ->where('vehiculos.placa','=',$placa)
+            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
+            ->get();
+        return view('VerRevisiones', compact('placa','revisiones'));
+
+    }
+
+    public function edit ($id) {
+        $revision = revision_calendarizada::find($id);
+
+        return view('ActualizarRevision',compact('revision'));
+
+    }
     
+    public function update ($id,Request $request) {
+        $revision = revision_calendarizada::find($id);
+        
+        $revision->nombre = $request->nombre;
+        $revision->km_revision = $request->km_revision;
+        $revision->detalle = $request->detalle;
+        
+        $revision->save();
+        
+        return redirect('Revisiones');
+        
+    }
+    
+    public function ver ($id,$placa){
+        
+        $revision = revision_calendarizada::find($id);
+        
+        return view('VerRevision', compact('revision', 'placa'));
+        
+    }
 }
