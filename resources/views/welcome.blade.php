@@ -85,6 +85,7 @@
                     <a href="Vehiculos">Vehiculos</a>
                     <a href="Repuestos">Inventario</a>
                     <a href="Faltantes">faltantes</a>
+                    <a href="Revisiones">Revisiones</a>
                     <a href="{{ url('/logout') }}"
                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

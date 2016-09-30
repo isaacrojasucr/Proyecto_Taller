@@ -53,12 +53,12 @@
                             <li class="active"><a href="/Proyecto_Taller/public/Oficina">Inicio</a></li>
                             <li><a href="/Proyecto_Taller/public/Usuarios">Usuarios</a></li>
                             @endif
-                            <li><a href="Vehiculos">Vehiculos</a></li>
+                            <li><a href="/Proyecto_Taller/public/Vehiculos">Vehiculos</a></li>
                             <li><a href="/Proyecto_Taller/public/Repuestos">Respuestos</a> </li>
                             @if(Auth::user()->puesto == 1)
                             <li><a href="/Proyecto_Taller/public/Faltantes">Faltantes</a></li>
                             @endif
-                            <li><a href="#">Revisiones</a></li>
+                            <li><a href="/Proyecto_Taller/public/Revisiones">Revisiones</a></li>
                             @endif
                             <li>
                                 <a href="{{ url('/logout') }}"

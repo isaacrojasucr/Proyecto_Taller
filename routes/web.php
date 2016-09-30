@@ -29,7 +29,10 @@ Route::get('/', function () {
 
     Route::get('Faltantes', 'RepuestosController@faltantes');
 
+    Route::get('Revisiones', 'RevisionesController@index');
+
     Route::resource('Oficina', 'HomeController@oficina');
+
 
 //acceso a los recursos usuarios
     Route::resource('Usuarios', 'usuarioController');
@@ -54,8 +57,20 @@ Route::get('/', function () {
 //ruta para realizar busqueda de registros.
     Route::post('Repuestos/buscar', ['as' => 'Repuestos/buscar', 'uses' => 'RepuestosController@buscar']);
 
+//acceso a los recursos vehiculos
+Route::resource('Revisiones', 'RevisionesController');
 
-    
+Route::get('Revisiones/deleted/{placa}/{id}', ['as' => 'Revisiones/deleted', 'uses' => 'RevisionesController@eliminar']);
+
+Route::get('Revisiones/todas/{id}', ['as'=> 'Revisiones/todas','uses' => 'RevisionesController@todas']);
+//ruta para realizar busqueda de registros.
+Route::post('Revisiones/buscar', ['as' => 'Revisiones/buscar', 'uses' => 'RevisionesController@buscar']);
+
+Route::get('Revisiones/index',['as' => 'Revisiones/index', 'uses' => 'RevisionesController@inicio']);
+
+Route::get('Revisiones/editar/{placa}/{id}',['as'=>'Revisiones/editar','uses' => 'RevisionesController@editar']);
+
+Route::get('Revisiones/nuevo/{placa}',['as'=>'Revisiones/nuevo', 'uses' => 'RevisionesController@nuevo']);
 
 
 Auth::routes();

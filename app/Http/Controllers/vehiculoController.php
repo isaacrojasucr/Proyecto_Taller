@@ -31,7 +31,7 @@ class vehiculoController extends Controller
     }
 
     public function index(){
-        $vehiculos = vehiculo::all();
+        $vehiculos = vehiculo::where('habilitado','=',1)->get();
 
         return view('Vehiculos', compact('vehiculos'));
 
