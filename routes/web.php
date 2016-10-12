@@ -31,6 +31,8 @@ Route::get('/', function () {
 
     Route::get('Revisiones', 'RevisionesController@index');
 
+    Route ::get('Taller', 'tallerController@index');
+
     Route::resource('Oficina', 'HomeController@oficina');
 
 
@@ -79,6 +81,7 @@ Route::get('Revisiones/ver/{id}/{placa}', ['as' => 'Revisiones/ver', 'uses' => '
 Route::get('Revisiones/existente/{placa}',['as'=> 'Revisiones/existente', 'uses'=>'RevisionesController@existente']);
 
 Route::get('Revisiones/tomar/{placa}/{id}',['as'=>'Revisiones/tomar', 'uses'=>'RevisionesController@tomar']);
+
 
 
 Auth::routes();
