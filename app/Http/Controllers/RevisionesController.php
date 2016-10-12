@@ -119,4 +119,34 @@ class RevisionesController extends Controller
         return view('VerRevision', compact('revision', 'placa'));
         
     }
+    
+    public function existente ($placa) {
+        $revisiones = revision_calendarizada::all();
+        
+        return view('RevisionesExistentes', compact('placa','revisiones'));
+    }
+    
+    public function tomar ($placa, $id) {
+        $revision =  new revision_calendarizada();
+
+        $temp = revision_calendarizada::find($id);
+
+        $vehiculo = vehiculo::find($placa);
+
+        $revision->nombre = $temp->nombre;
+        $revision->detalle = $temp->detalle;
+        $revision->km_revision = $temp->km_revision;
+        $revision->km_inicial = $vehiculo->km_total;
+        $revision->estado = 1;
+        $revision->save();
+
+        $id = \DB::table('revision_calendarizadas')->max('id');
+
+        $somete = new somete();
+        $somete->placa_vehiculo = $placa;
+        $somete->id_revision = $id;
+        $somete->save();
+
+        return redirect('Revisiones/todas/'.$placa);
+    }
 }

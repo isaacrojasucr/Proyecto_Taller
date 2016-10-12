@@ -9,7 +9,7 @@
             <br>
 
             <div class="col-md-10 col-md-offset-1">
-                {!! Form::open(['route' => 'Revisiones/guardar', 'method' => 'post', 'novalidate']) !!}
+                {!! Form::open(['route' => 'Revisiones/guardar', 'method' => 'post']) !!}
 
                 {!! Form::hidden('placa', $placa) !!}
                 <div class="form-group">

@@ -8,7 +8,7 @@
             <br>
 
             <a href="{{ route('Revisiones/nuevo', ['Placa' =>$placa]) }}" class="btn btn-primary">Nuevo</a>
-            <a href="{{ route('Revisiones/nuevo', ['Placa' =>$placa]) }}" class="btn btn-primary">Existente</a>
+            <a href="{{ route('Revisiones/existente', ['Placa' =>$placa]) }}" class="btn btn-primary">Existente</a>
 
             <br>
             <br>

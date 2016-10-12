@@ -50,26 +50,32 @@
                         <ul class="nav navbar-nav">
                             @if(Auth::user()->puesto != 3)
                             @if(Auth::user()->puesto == 1)
-                            <li class="active"><a href="/Proyecto_Taller/public/Oficina">Inicio</a></li>
-                            <li><a href="/Proyecto_Taller/public/Usuarios">Usuarios</a></li>
+                            <li class="active"><a href="/Proyecto_Taller/public/Oficina"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
+                            <li><a href="/Proyecto_Taller/public/Usuarios"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuarios</a></li>
                             @endif
-                            <li><a href="/Proyecto_Taller/public/Vehiculos">Vehiculos</a></li>
-                            <li><a href="/Proyecto_Taller/public/Repuestos">Respuestos</a> </li>
+                            <li><a href="/Proyecto_Taller/public/Vehiculos"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Vehiculos</a></li>
+                            <li><a href="/Proyecto_Taller/public/Repuestos"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Respuestos</a> </li>
                             @if(Auth::user()->puesto == 1)
-                            <li><a href="/Proyecto_Taller/public/Faltantes">Faltantes</a></li>
+                            <li><a href="/Proyecto_Taller/public/Faltantes"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Faltantes</a></li>
                             @endif
-                            <li><a href="/Proyecto_Taller/public/Revisiones">Revisiones</a></li>
+                            <li><a href="/Proyecto_Taller/public/Revisiones"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Revisiones</a></li>
                             @endif
                             <li>
+
                                 <a href="{{ url('/logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
+
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                                     Cerrar Sesión
+
+
                                 </a>
 
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
+
                             </li>
                         </ul>
 

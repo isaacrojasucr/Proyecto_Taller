@@ -13,6 +13,9 @@ class usuarioController extends Controller
 
 
     public function store(Request $request) {
+
+        
+
         $usuario = new User();
         $usuario->habilitado = 1;
         $usuario->cedula= $request->cedula;

@@ -11,11 +11,11 @@
                 {!! Form::model($usuario, ['method' => 'PATCH', 'action' => ['usuarioController@update', $usuario->id]]) !!}
                 <div class="form-group">
                     {!! Form::label('cedula', 'Cedula') !!}
-                    {!! Form::text('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('contraseña', 'Contraseña') !!}
-                    {!! Form::password('password', null, ['class' => 'form-control' , 'required' => 'required']) !!}
+                    {!! Form::password('password', ['class' => 'form-control' , 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('full_name', 'Correo Institucional') !!}

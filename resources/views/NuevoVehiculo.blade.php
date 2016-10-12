@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            {!! Form::open(['route' => 'Vehiculos.store', 'method' => 'post', 'novalidate']) !!}
+            {!! Form::open(['route' => 'Vehiculos.store', 'method' => 'post']) !!}
             <div class="form-group">
                 {!! Form::label('placa', 'Placa') !!}
                 {!! Form::text('placa', null, ['class' => 'form-control' , 'required' => 'required']) !!}

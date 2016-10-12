@@ -76,6 +76,10 @@ Route::post('Revisiones/guardar', ['as' => 'Revisiones/guardar', 'uses' => 'Revi
 
 Route::get('Revisiones/ver/{id}/{placa}', ['as' => 'Revisiones/ver', 'uses' => 'RevisionesController@ver']);
 
+Route::get('Revisiones/existente/{placa}',['as'=> 'Revisiones/existente', 'uses'=>'RevisionesController@existente']);
+
+Route::get('Revisiones/tomar/{placa}/{id}',['as'=>'Revisiones/tomar', 'uses'=>'RevisionesController@tomar']);
+
 
 Auth::routes();
 

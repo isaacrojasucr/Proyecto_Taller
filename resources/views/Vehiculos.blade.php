@@ -36,7 +36,9 @@
 
                         <td>
                             <a class="btn btn-primary btn-xs" href="{{ route('Vehiculos.edit',['id' => $vehiculo->placa] )}}" >Editar</a>
+                            <a class="btn btn-warning btn-xs" href="{{ route('Revisiones/todas',['id' => $vehiculo->placa] )}}" >Ver revisiones</a>
                             <a class="btn btn-danger btn-xs" href="{{ route('Vehiculos/eliminar',['id' => $vehiculo->placa] )}}" >Eliminar</a>
+
                         </td>
 
                     </tr>

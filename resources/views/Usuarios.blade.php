@@ -18,10 +18,10 @@
             <table class="table table-condensed table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Identicacion</th>
+                    <th>Identicación</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>Puesto</th>
+                    <th>Rol</th>
                     <th>Action</th>
 
                 </tr>
