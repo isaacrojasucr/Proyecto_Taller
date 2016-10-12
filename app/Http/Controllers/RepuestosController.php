@@ -24,7 +24,7 @@ class RepuestosController extends Controller
 
         $repuesto->save();
 
-        return redirect(Repuestos);
+        return redirect('Repuestos');
     }
 
     public function index(){
@@ -48,9 +48,9 @@ class RepuestosController extends Controller
     public function eliminar($id){
         $repuesto = repuesto::find($id);
 
-        $repuesto.delete();
+        $repuesto->delete();
 
-        return redirect('Usuarios');
+        return redirect('Repuestos');
 
     }
 

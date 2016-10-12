@@ -16,7 +16,8 @@ class CreateRevisasTable extends Migration
         Schema::create('revisas', function (Blueprint $table) {
             $table->integer('id_usuario')->unsigned();
             $table->integer('placa_vehiculo')->unsigned();
-
+            $table->bigInteger('km_anterior');
+            $table->timestamps();
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->foreign('placa_vehiculo')->references('placa')->on('vehiculos');
 

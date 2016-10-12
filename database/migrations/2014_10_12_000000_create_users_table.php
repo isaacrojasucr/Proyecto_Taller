@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('cedula')->unique();
             $table->smallInteger('puesto');
             $table->string('apellidos');
-            
+            $table->timestamps();
         });
     }
 
