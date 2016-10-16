@@ -15,6 +15,7 @@ class CreatePertenecesTable extends Migration
     {
         Schema::create('perteneces', function (Blueprint $table) {
 
+            $table->increments('id')->unsigned();
             $table->integer('id_repuesto')->unsigned();
             $table->integer('placa_vehiculo')->unsigned();
             $table->bigInteger('km_inicial');

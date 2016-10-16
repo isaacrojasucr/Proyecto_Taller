@@ -15,6 +15,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="sticky-footer.css" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -23,6 +26,7 @@
     </script>
 </head>
 <body>
+    <style> body { font-family: 'Comfortaa', cursive;} </style>
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -52,6 +56,9 @@
                             @if(Auth::user()->puesto == 1)
                             <li class="active"><a href="/Proyecto_Taller/public/Oficina"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             <li><a href="/Proyecto_Taller/public/Usuarios"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuarios</a></li>
+                            @endif
+                            @if(Auth::user()->puesto == 2)
+                                <li class="active"><a href="/Proyecto_Taller/public/Taller "><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             @endif
                             <li><a href="/Proyecto_Taller/public/Vehiculos"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Vehiculos</a></li>
                             <li><a href="/Proyecto_Taller/public/Repuestos"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Respuestos</a> </li>
@@ -95,6 +102,30 @@
     @yield('content')
 
     <!-- Scripts -->
+
+    <footer style="position: fixed;
+                    bottom: 0;
+                    width: 100%;
+  /* Set the fixed height of the footer here */
+                    height: 9%;
+                    background-color: #f5f5f5;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5 align="center">Oficina de Servicios Generales-2016</h5>
+                    <h5 align="center">Universidad de Costa Rica, Sede Occidente</h5>
+                </div>
+                @if(Auth::user()->puesto == 2)
+                <div class="col-sm-8">
+                    <h4 align="center"> Acciones a realizar</h4>
+                </div>
+                @endif
+            </div>
+
+        </div>
+    </footer>
+
+
     <script src="/js/app.js"></script>
 </body>
 </html>

@@ -24,12 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $vehiculos = vehiculo::all();
-        $placas = collect([]);
-        foreach ($vehiculos as $vehiculo){
-            $placas->put($vehiculo->placa, $vehiculo->placa);
-        }
-        return view('home', compact('placas'));
+
+        
+            $vehiculos = vehiculo::all();
+            $placas = collect([]);
+            foreach ($vehiculos as $vehiculo){
+                $placas->put($vehiculo->placa, $vehiculo->placa);
+            }
+            return view('home', compact('placas'));
+        
+        
 
     }
 

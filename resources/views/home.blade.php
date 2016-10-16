@@ -7,7 +7,9 @@
                         window.location="/Proyecto_Taller/public/Oficina";
                     </script>
                 @elseif(Auth::user()->puesto == 2)
-
+                    <script type="text/javascript">
+                        window.location="/Proyecto_Taller/public/Taller";
+                    </script>
                 @else
                     <div class="container">
                         <div class="col-md-8 col-md-offset-2">

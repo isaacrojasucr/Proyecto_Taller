@@ -8,13 +8,16 @@
         <title>Oficina</title>
 
         <!-- Fonts -->
-
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- Styles -->
 
     </head>
     <body>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
 
     <style>
@@ -75,27 +78,43 @@
             <div class="content">
                 <div class="title m-b-md">
                     <img src="http://www.so.ucr.ac.cr/ucrfm/sites/default/files/logo-ucrso.png">
-                    <br>
-                    Bienvenido(a) al módulo de Administración
-                    <br>
-                </div>
 
-                <div class="links">
-                    <a href="Usuarios">Usuarios</a>
-                    <a href="Vehiculos">Vehiculos</a>
-                    <a href="Repuestos">Inventario</a>
-                    <a href="Faltantes">faltantes</a>
-                    <a href="Revisiones">Revisiones</a>
-                    <a href="{{ url('/logout') }}"
+                   <br>
+
+                    <h1>Bienvenido(a) {{ Auth::user()->name }} {{Auth::user()->apellidos}}</h1>
+
+                    Oficina de Servicios Generales
+
+
+
+
+                </div>
+                <br><br>
+                    <a href="Usuarios" class="btn btn-primary btn-lg active">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                         Usuarios</a>
+                    <a href="Vehiculos" class="btn btn-primary btn-lg active">
+                        <span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
+                         Vehiculos</a>
+                    <a href="Repuestos" class="btn btn-primary btn-lg active">
+                        <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                         Inventario</a>
+                    <a href="Faltantes" class="btn btn-primary btn-lg active">
+                        <span class="glyphicon glyphicon-alert" aria-hidden="true"></span>
+                         faltantes</a>
+                    <a href="Revisiones"class="btn btn-primary btn-lg active">
+                        <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
+                         Revisiones</a>
+                    <a href="{{ url('/logout') }}" class="btn btn-primary btn-lg active"
                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                        Cerrar Sesión
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                         Cerrar Sesión
                     </a>
                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
 
-                </div>
             </div>
         </div>
     </body>

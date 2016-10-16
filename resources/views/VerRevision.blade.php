@@ -22,6 +22,7 @@
                 </div>
                 <div class="form-group">
                     {!! Form::button('Exportar PDF', ['class' => 'btn btn-success ' ] ) !!}
+
                 </div>
 
             </div>

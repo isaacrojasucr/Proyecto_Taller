@@ -14,7 +14,19 @@
 
 
 Route::get('/', function () {
-    return redirect('login');
+    if (Auth::guest()){
+        return redirect('login');
+    }else{
+        if(Auth::user()->puesto == 1){
+            return redirect('Oficina');
+        }elseif (Auth::user()->puesto == 2){
+            return redirect('Taller');
+        }else{
+            return redirect('home');
+        }
+
+    }
+
 });
 
 
@@ -32,6 +44,8 @@ Route::get('/', function () {
     Route::get('Revisiones', 'RevisionesController@index');
 
     Route ::get('Taller', 'tallerController@index');
+
+
 
     Route::resource('Oficina', 'HomeController@oficina');
 
@@ -82,7 +96,11 @@ Route::get('Revisiones/existente/{placa}',['as'=> 'Revisiones/existente', 'uses'
 
 Route::get('Revisiones/tomar/{placa}/{id}',['as'=>'Revisiones/tomar', 'uses'=>'RevisionesController@tomar']);
 
+Route::get('Taller/Revisiones/{id}',['as'=>'Taller/Revisiones', 'uses'=>'tallerController@revisiones']);
 
+Route::get('Taller/Repuestos/{id}',['as'=>'Taller/Repuestos', 'uses'=>'tallerController@repuestos']);
+
+Route::get('Taller/Cambiar/{placa}/{id}', ['as'=>'Taller/Cambiar', 'uses'=> 'tallerController@cambiar']);
 
 Auth::routes();
 
