@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\vehiculo;
 use App\pertenece;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
 
 class tallerController extends Controller
 {
@@ -135,7 +136,6 @@ class tallerController extends Controller
         
     }
 
-
     public function asignado ($id, $placa){
 
         $pertenece = new pertenece();
@@ -150,6 +150,35 @@ class tallerController extends Controller
         $pertenece->save();
 
         return redirect('Taller');
+
+    }
+
+    public function almacenar(Request $request){
+
+        $placa = $request->placa;
+
+
+        $repuesto = new repuesto();
+        $repuesto->cantidad = $request->cantidad;
+        $repuesto->vida_util= $request->vida_util;
+        $repuesto->nombre = $request->nombre;
+
+        $repuesto->save();
+
+
+
+        $ve = vehiculo::find($placa);
+
+
+        $pertenece = new pertenece();
+
+        $pertenece->id_repuesto = $repuesto->id;
+        $pertenece->placa_vehiculo = $placa;
+        $pertenece->km_inicial = $ve->km_total;
+
+        $pertenece->save();
+
+        return redirect('Repuestos');
 
     }
     

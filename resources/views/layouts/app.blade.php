@@ -142,7 +142,7 @@
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
                                         <li><a href="http://localhost/Proyecto_Taller/public/Taller/asignar">Asignar repuesto</a></li>
-                                        <li><a href="#">Agregar repuesto</a></li>
+                                        <li><a href="{{ route('Repuestos.create') }}">Agregar repuesto</a></li>
                                         <li><a href="#">Revision de corrección</a></li>
                                     </ul>
                                 </div><!-- /.navbar-collapse -->

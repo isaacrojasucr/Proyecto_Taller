@@ -108,7 +108,7 @@ Route::post('Taller/continuar',['as'=>'Taller/continuar', 'uses'=>'tallerControl
 
 Route::get('Taller/asignado/{id}/{placa}', ['as'=>'Taller/asignado', 'uses'=>'tallerController@asignado']);
 
-
+Route::post('Taller/almacenar',['as'=>'Taller/almacenar', 'uses' => 'tallerController@almacenar']);
 Auth::routes();
 
 Route::get('home', 'HomeController@index');

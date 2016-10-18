@@ -15,7 +15,7 @@
                     <th>Nombre</th>
                     <th>Vida Util</th>
                     <th>Cantidad</th>
-                    <th>Action</th>
+                    <th>Acción</th>
 
                 </tr>
                 </thead>
