@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\repuesto;
 use Illuminate\Http\Request;
 use App\vehiculo;
 use App\pertenece;
@@ -99,6 +100,57 @@ class tallerController extends Controller
         return back();
     }
     
+    public function preasignacion(){
+
+        $temp = vehiculo::all();
+
+        $placas = collect([]);
+        foreach ($temp as $vehiculo){
+            if ($vehiculo->habilitado==1){
+            $str = $vehiculo->marca. ', '. $vehiculo->modelo. ', Placa: '. $vehiculo->placa;
+
+            $placas->put($vehiculo->placa, $str);
+
+
+            }
+        }
+        return view('asignar', compact('placas'));
+    }
     
+    public function continuar(Request $request){
+        
+        $placa = $request->placa;
+
+        if($request->opcion == 0){
+
+            return view('nuevoRep', compact('placa'));
+
+        }else{
+
+            $repuestos =  repuesto::all();
+
+            return view('existente', compact('placa', 'repuestos'));
+
+        }
+        
+    }
+
+
+    public function asignado ($id, $placa){
+
+        $pertenece = new pertenece();
+
+        $ve = vehiculo::find($placa);
+
+
+        $pertenece->id_repuesto = $id;
+        $pertenece->placa_vehiculo = $placa;
+        $pertenece->km_inicial = $ve->km_total;
+
+        $pertenece->save();
+
+        return redirect('Taller');
+
+    }
     
 }

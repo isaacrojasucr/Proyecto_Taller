@@ -17,10 +17,10 @@
                                 <div class="panel-heading" align="center">Ingrese los datos del vehiculo correspondiente </div>
                                     <div class="panel-body" align="center">
 
-                                        {!! Form::open(['route' => 'Vehiculos/reportar', 'method' => 'post', 'novalidate', 'class' => 'form-inline']) !!}
+                                        {!! Form::open(['route' => 'Vehiculos/reportar', 'method' => 'post', 'validate', 'class' => 'form-inline']) !!}
 
                                         {!! Form::hidden('id', Auth::user()->id) !!}
-                                        
+
                                         <div class="form-group">
                                             {!! Form::label('placa', 'Placa') !!}
                                             <br>

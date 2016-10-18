@@ -12,8 +12,8 @@
             <div class="panel-group">
 
                 <div class="panel panel-primary">
-                    <div class="panel-heading">VEHÍCULOS  CON PENDIENTES </div>
-                    <div class="panel-body">
+                    <div class="panel-heading"align="center">VEHÍCULOS  CON PENDIENTES </div>
+                    <div class="panel-body"align="center">
 
                             <table class="table table-condensed table-striped table-bordered">
                                 <thead>
@@ -61,7 +61,7 @@
             <div class="panel-group">
 
                 <div class="panel panel-info">
-                    <div class="panel-heading"> SELECCIONAR REVISIONES O REPUESTOS DE UN VEHÍCULO </div>
+                    <div class="panel-heading"align="center"> SELECCIONAR REVISIONES O REPUESTOS DE UN VEHÍCULO </div>
                     <div class="panel-body">
 
                     </div>

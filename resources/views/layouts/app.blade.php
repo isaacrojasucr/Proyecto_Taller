@@ -21,14 +21,14 @@
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
+                'csrfToken' => csrf_token(),
         ]); ?>
     </script>
 </head>
 <body>
     <style> body { font-family: 'Comfortaa', cursive;} </style>
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
+    <nav class="navbar navbar-default navbar-static-top"  >
+        <div class="container" >
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
                     @if (Auth::guest())
@@ -111,14 +111,49 @@
                     background-color: #f5f5f5;">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
-                    <h5 align="center">Oficina de Servicios Generales-2016</h5>
-                    <h5 align="center">Universidad de Costa Rica, Sede Occidente</h5>
-                </div>
-                @if(Auth::user()->puesto == 2)
-                <div class="col-sm-8">
-                    <h4 align="center"> Acciones a realizar</h4>
-                </div>
+
+                @if(Auth::guest())
+                    <div class="col-sm-12">
+                        <h5 align="center">Oficina de Servicios Generales-2016</h5>
+                        <h5 align="center">Universidad de Costa Rica, Sede Occidente</h5>
+                    </div>
+                @elseif(Auth::user()->puesto == 2)
+                    <div class="col-sm-4">
+                        <h5 align="center">Oficina de Servicios Generales-2016</h5>
+                        <h5 align="center">Universidad de Costa Rica, Sede Occidente</h5>
+                    </div>
+                    <div class="col-sm-8">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">
+                                        Acciones
+                                    </a>
+                                </div>
+
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="http://localhost/Proyecto_Taller/public/Taller/asignar">Asignar repuesto</a></li>
+                                        <li><a href="#">Agregar repuesto</a></li>
+                                        <li><a href="#">Revision de corrección</a></li>
+                                    </ul>
+                                </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                @else
+                    <div class="col-sm-12">
+                        <h5 align="center">Oficina de Servicios Generales-2016</h5>
+                        <h5 align="center">Universidad de Costa Rica, Sede Occidente</h5>
+                    </div>
                 @endif
             </div>
 

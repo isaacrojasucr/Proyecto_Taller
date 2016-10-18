@@ -12,8 +12,8 @@
                 <div class="panel-group">
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading">VEHÍCULOS  CON PENDIENTES </div>
-                        <div class="panel-body">
+                        <div class="panel-heading"align="center">VEHÍCULOS  CON PENDIENTES </div>
+                        <div class="panel-body"align="center">
 
                             <table class="table table-condensed table-striped table-bordered">
                                 <thead>
@@ -60,8 +60,8 @@
             <div class="col-sm-6" >
                 <div class="panel-group">
                     <div class="panel panel-info">
-                        <div class="panel-heading">{{$tipo}} del vehículo {{$ve->marca}}, {{$ve->modelo}}, Placa: {{$ve->placa}}</div>
-                        <div class="panel-body">
+                        <div class="panel-heading"align="center">{{$tipo}} del vehículo {{$ve->marca}}, {{$ve->modelo}}, Placa: {{$ve->placa}}</div>
+                        <div class="panel-body"align="center">
                             <table class="table table-condensed table-striped table-bordered">
                                 <thead>
                                 <tr>

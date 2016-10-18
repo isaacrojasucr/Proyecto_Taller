@@ -102,6 +102,13 @@ Route::get('Taller/Repuestos/{id}',['as'=>'Taller/Repuestos', 'uses'=>'tallerCon
 
 Route::get('Taller/Cambiar/{placa}/{id}', ['as'=>'Taller/Cambiar', 'uses'=> 'tallerController@cambiar']);
 
+Route::get('Taller/asignar', ['as'=>'Taller/asignar', 'uses'=>'tallerController@preasignacion']);
+
+Route::post('Taller/continuar',['as'=>'Taller/continuar', 'uses'=>'tallerController@continuar']);
+
+Route::get('Taller/asignado/{id}/{placa}', ['as'=>'Taller/asignado', 'uses'=>'tallerController@asignado']);
+
+
 Auth::routes();
 
 Route::get('home', 'HomeController@index');

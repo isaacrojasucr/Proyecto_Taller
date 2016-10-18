@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="row">
 
             <h1 align="center"> <span class="label label-info">Editando revision pendiente </span></h1>
@@ -28,5 +28,6 @@
                 {!! Form::close() !!}
             </div>
         </div>
+        </br></br></br>
     </div>
 @endsection
