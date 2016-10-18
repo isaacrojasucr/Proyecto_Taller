@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\revisa;
 use App\vehiculo;
 use Illuminate\Http\Request;
 
@@ -84,11 +85,21 @@ class vehiculoController extends Controller
     
     public function reportar ( Request $request){
         $vehiculo = vehiculo::find($request->placa);
+
+        $id = $request->id;
+        $ante = $vehiculo->km_total;
+        $placa = $request->placa;
         
         $vehiculo->km_total = $request->km_total;
         
         $vehiculo->save();
-        
+
+        $revisa =  new revisa();
+        $revisa->id_usuario = $id;
+        $revisa->placa_vehiculo = $placa;
+        $revisa->km_anterior= $ante;
+        $revisa->save();
+
         Return redirect('home/exit');
         
     }
