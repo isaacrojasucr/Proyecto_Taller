@@ -21,7 +21,7 @@
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Kilometraje</th>
-                <th>Action</th>
+                <th>Acción</th>
 
             </tr>
             </thead>
@@ -38,6 +38,7 @@
                             <a class="btn btn-primary btn-xs" href="{{ route('Vehiculos.edit',['id' => $vehiculo->placa] )}}" >Editar</a>
                             <a class="btn btn-warning btn-xs" href="{{ route('Revisiones/todas',['id' => $vehiculo->placa] )}}" >Ver revisiones</a>
                             <a class="btn btn-danger btn-xs" href="{{ route('Vehiculos/eliminar',['id' => $vehiculo->placa] )}}" >Eliminar</a>
+                            <a class="btn btn-success btn-xs" href="{{ route('Vehiculos/repuesto',['id' => $vehiculo->placa] )}}" >Repuestos</a>
 
                         </td>
 

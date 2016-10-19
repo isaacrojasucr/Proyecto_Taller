@@ -66,6 +66,8 @@ Route::get('/', function () {
 
     Route::post('Vehiculos/reportar', ['as' => 'Vehiculos/reportar', 'uses' => 'vehiculoController@reportar']);
 
+    Route::get('Vehiculos/repuesto/{id}', ['as' => 'Vehiculos/repuesto', 'uses'=> 'vehiculoController@repuestos']);
+
 //acceso a los recursos vehiculos
     Route::resource('Repuestos', 'RepuestosController');
 //una nueva ruta para eliminar registros con el metodo get

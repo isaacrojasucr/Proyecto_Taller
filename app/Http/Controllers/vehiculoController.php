@@ -103,4 +103,16 @@ class vehiculoController extends Controller
         Return redirect('home/exit');
         
     }
+    
+    public function repuestos($placa){
+
+        $repuestos = \DB::table('vehiculos')
+            ->join('perteneces','vehiculos.placa','=','perteneces.placa_vehiculo')
+            ->join('repuestos','perteneces.id_repuesto','=','repuestos.id')
+            ->where('vehiculos.placa','=',$placa)
+            ->select('repuestos.vida_util', 'repuestos.nombre', 'repuestos.cantidad', 'repuestos.id')
+            ->get();
+        return view('VehiRepuesto', compact('placa','repuestos'));
+        
+    }
 }
