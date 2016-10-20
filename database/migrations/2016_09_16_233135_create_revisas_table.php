@@ -14,6 +14,7 @@ class CreateRevisasTable extends Migration
     public function up()
     {
         Schema::create('revisas', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
             $table->integer('id_usuario')->unsigned();
             $table->integer('placa_vehiculo')->unsigned();
             $table->bigInteger('km_anterior');

@@ -63,8 +63,9 @@
                             <li><a href="/Proyecto_Taller/public/Vehiculos"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Vehiculos</a></li>
                             <li><a href="/Proyecto_Taller/public/Repuestos"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Respuestos</a> </li>
                             @if(Auth::user()->puesto == 1)
-                            <li><a href="/Proyecto_Taller/public/Faltantes"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Faltantes</a></li>
-                            @endif
+                                    <li><a href="/Proyecto_Taller/public/Faltantes"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Faltantes</a></li>
+
+                                @endif
                             <li><a href="/Proyecto_Taller/public/Revisiones"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Revisiones</a></li>
                             @endif
                             <li>
@@ -74,8 +75,8 @@
                                                  document.getElementById('logout-form').submit();">
 
                                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                                    Cerrar Sesión
 
+                                    Cerrar sesión
 
                                 </a>
 

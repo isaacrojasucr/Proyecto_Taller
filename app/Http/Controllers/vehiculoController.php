@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\pertenece;
 use App\revisa;
+use App\User;
 use App\vehiculo;
 use Illuminate\Http\Request;
 
@@ -110,9 +112,40 @@ class vehiculoController extends Controller
             ->join('perteneces','vehiculos.placa','=','perteneces.placa_vehiculo')
             ->join('repuestos','perteneces.id_repuesto','=','repuestos.id')
             ->where('vehiculos.placa','=',$placa)
-            ->select('repuestos.vida_util', 'repuestos.nombre', 'repuestos.cantidad', 'repuestos.id')
+            ->select('repuestos.vida_util', 'repuestos.nombre', 'repuestos.cantidad', 'perteneces.id', 'perteneces.km_inicial')
             ->get();
         return view('VehiRepuesto', compact('placa','repuestos'));
         
     }
+
+    public function cambiar ($placa, $id){
+
+
+        $act = pertenece::find($id);
+
+
+
+        $ve = vehiculo::find($placa);
+
+        $act->km_inicial = $ve->km_total;
+
+
+        $act->save();
+        return back();
+    }
+
+    public function reportes($placa){
+
+        $reportes = revisa::where('placa_vehiculo','=',$placa)
+                            ->get();
+
+        $usuarios = User::all();
+        
+        return view('Reportes', compact('placa', 'reportes', 'usuarios')); 
+
+    }
+
+
+
+
 }

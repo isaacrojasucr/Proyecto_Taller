@@ -13,24 +13,29 @@
             <table class="table table-condensed table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Vida Util</th>
-                    <th>Cantidad</th>
+                    <th>Usuario</th>
+                    <th>Km anterior</th>
+                    <th>Fecha</th>
                     <th>Acción</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($repuestos as $respuesto)
+                @foreach($reportes as $reporte)
+                    @foreach($usuarios as $usu)
+                        @if($usu->id == $reporte->id_usuario)
                     <tr>
-                        <td>{{ $respuesto->nombre }}</td>
-                        <td>{{ $respuesto->vida_util + $respuesto->km_inicial}}</td>
-                        <td>{{ $respuesto->cantidad  }}</td>
+                        <td>{{ $usu->name . ' ' . $usu->apellidos }}</td>
+                        <td>{{ $reporte->km_anterior}}</td>
+                        <td>{{ $reporte->created_at}}</td>
                         <td>
-                            <a class="btn btn-primary btn-xs" href="{{ route('Vehiculos/Cambiar',['placa' => $placa,'id' => $respuesto->id ] )}}" onclick="return confirmar()" >Cambiar</a>
+                            <a class="btn btn-primary btn-xs" href="#" onclick="return confirmar()" >Retornar km</a>
                         </td>
 
                     </tr>
+                            @break
+                    @endif
+                        @endforeach
                 @endforeach
                 </tbody>
             </table>

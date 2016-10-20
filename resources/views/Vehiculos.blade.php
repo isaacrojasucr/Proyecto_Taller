@@ -39,7 +39,10 @@
                             <a class="btn btn-warning btn-xs" href="{{ route('Revisiones/todas',['id' => $vehiculo->placa] )}}" >Ver revisiones</a>
                             <a class="btn btn-danger btn-xs" href="{{ route('Vehiculos/eliminar',['id' => $vehiculo->placa] )}}" >Eliminar</a>
                             <a class="btn btn-success btn-xs" href="{{ route('Vehiculos/repuesto',['id' => $vehiculo->placa] )}}" >Repuestos</a>
+                            @if(Auth::user()->puesto == 1)
+                                <a class="btn btn-info btn-xs" href="{{ route('Vehiculos/reporte',['id' => $vehiculo->placa] )}}" >Reportes de km</a>
 
+                            @endif
                         </td>
 
                     </tr>

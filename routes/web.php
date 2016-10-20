@@ -45,8 +45,6 @@ Route::get('/', function () {
 
     Route ::get('Taller', 'tallerController@index');
 
-
-
     Route::resource('Oficina', 'HomeController@oficina');
 
 
@@ -67,6 +65,10 @@ Route::get('/', function () {
     Route::post('Vehiculos/reportar', ['as' => 'Vehiculos/reportar', 'uses' => 'vehiculoController@reportar']);
 
     Route::get('Vehiculos/repuesto/{id}', ['as' => 'Vehiculos/repuesto', 'uses'=> 'vehiculoController@repuestos']);
+
+    Route::get('Vehiculos/reporte/{id}', ['as'=> 'Vehiculos/reporte', 'uses'=>'vehiculoController@reportes']);
+
+    Route::get('Vehiculos/Cambiar/{placa}/{id}', ['as'=>'Vehiculos/Cambiar', 'uses'=>'vehiculoController@cambiar']);
 
 //acceso a los recursos vehiculos
     Route::resource('Repuestos', 'RepuestosController');
