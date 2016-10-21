@@ -77,6 +77,12 @@ Route::get('/', function () {
 //ruta para realizar busqueda de registros.
     Route::post('Repuestos/buscar', ['as' => 'Repuestos/buscar', 'uses' => 'RepuestosController@buscar']);
 
+   Route::get('Repuestos/exportar', ['as' => 'Repuestos/exportar', 'uses' => 'RepuestosController@exportPDF']);
+
+    //Route::get('Repuestos/exportar', function () {
+    //    $pdf = PDF::loadView('welcome');
+    //    return $pdf->download('pruebapdf.pdf');
+    //});
 //acceso a los recursos vehiculos
 Route::resource('Revisiones', 'RevisionesController');
 

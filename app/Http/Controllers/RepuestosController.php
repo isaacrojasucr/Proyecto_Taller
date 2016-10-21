@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\repuesto;
 use App\vehiculo;
+use Dompdf\Dompdf;
 use App\Http\Requests;
+use Barryvdh\DomPDF\Facade as PDF;
+
 use phpDocumentor\Reflection\Types\Array_;
 
 class RepuestosController extends Controller
@@ -89,4 +92,27 @@ class RepuestosController extends Controller
 
     }
 
+
+
+    public function show(){
+        $pdf = PDF::loadView('welcome');
+        return $pdf->download('archivo.pdf');
+    }
+
+    public function exportPDF () {
+        //$dompdf = new Dompdf();
+        
+        //$faltantes = repuesto::where('cantidad', '=', 0)->get();
+        //$vista = view('Faltantes', compact('faltantes'));
+        //$vista = PDF::loadView('Login');
+        //$dompdf->loadHtml($vista);
+        //$dompdf->setPaper('A4', 'landscape');
+        //$dompdf->set_option('defaultFont', 'Arial');
+        //$dompdf->render();
+        //$dompdf->stream();
+
+        //return back();
+        $pdf = PDF::loadView('welcome');
+        return $pdf->download('archivo.pdf');
+    }
 }
