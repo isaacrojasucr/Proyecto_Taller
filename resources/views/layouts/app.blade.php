@@ -8,8 +8,10 @@
     <!-- CSRF Token -->
     <meta name="Servicios Generales -Taller">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Oficina Servicios Generales</title>
 
+    <link rel="shortcut icon" href="http://moodle.fisica.ucr.ac.cr/pluginfile.php/2/course/section/1712/logo_ucr.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="http://moodle.fisica.ucr.ac.cr/pluginfile.php/2/course/section/1712/logo_ucr.png" />
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -56,19 +58,19 @@
                         <ul class="nav navbar-nav">
                             @if(Auth::user()->puesto != 3)
                             @if(Auth::user()->puesto == 1)
-                            <li class="active"><a href="/Proyecto_Taller/public/Oficina"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
-                            <li><a href="/Proyecto_Taller/public/Usuarios"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuarios</a></li>
+                            <li class="active"><a href="{{url('/Oficina')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
+                            <li><a href="{{url('/Usuarios')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuarios</a></li>
                             @endif
                             @if(Auth::user()->puesto == 2)
-                                <li class="active"><a href="/Proyecto_Taller/public/Taller "><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
+                                <li class="active"><a href="{{url('/Taller')}} "><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             @endif
-                            <li><a href="/Proyecto_Taller/public/Vehiculos"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Vehiculos</a></li>
-                            <li><a href="/Proyecto_Taller/public/Repuestos"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Respuestos</a> </li>
+                            <li><a href="{{url('/Vehiculos')}}"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Vehiculos</a></li>
+                            <li><a href="{{url('/Repuestos')}}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Respuestos</a> </li>
                             @if(Auth::user()->puesto == 1)
-                                    <li><a href="/Proyecto_Taller/public/Faltantes"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Faltantes</a></li>
+                                    <li><a href="{{url('/Faltantes')}}"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Faltantes</a></li>
 
                                 @endif
-                            <li><a href="/Proyecto_Taller/public/Revisiones"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Revisiones</a></li>
+                            <li><a href="{{url('/Revisiones')}}"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Revisiones</a></li>
                             @endif
                             <li>
 
@@ -144,7 +146,7 @@
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="http://localhost/Proyecto_Taller/public/Taller/asignar">Asignar repuesto</a></li>
+                                        <li><a href="{{route('Taller/asignar')}}">Asignar repuesto</a></li>
                                         <li><a href="{{ route('Repuestos.create') }}">Agregar repuesto</a></li>
                                         <li><a href="#">Revision de corrección</a></li>
                                     </ul>

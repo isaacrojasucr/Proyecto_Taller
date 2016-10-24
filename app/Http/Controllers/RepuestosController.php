@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\pertenece;
 use Illuminate\Http\Request;
 use App\repuesto;
 use App\vehiculo;
@@ -51,6 +52,14 @@ class RepuestosController extends Controller
     public function eliminar($id){
         $repuesto = repuesto::find($id);
 
+        $pert = pertenece::where('id_repuesto','=',$id )
+            ->get();
+
+
+        foreach ($pert as $p){
+            $p->delete();
+        }
+
         $repuesto->delete();
 
         return redirect('Repuestos');
@@ -65,8 +74,8 @@ class RepuestosController extends Controller
 
     public function buscar(Request $request){
 
-        $repuestos = repuesto::where('name','like','%'.$request->nombre.'%')->get();
-        return \View::make('Repuestos', compact('repuestos'));
+        $respuestos = repuesto::where('nombre','like','%'.$request->nombre.'%')->get();
+        return \View::make('Repuestos', compact('respuestos'));
 
     }
 
@@ -92,27 +101,4 @@ class RepuestosController extends Controller
 
     }
 
-
-
-    public function show(){
-        $pdf = PDF::loadView('welcome');
-        return $pdf->download('archivo.pdf');
-    }
-
-    public function exportPDF () {
-        //$dompdf = new Dompdf();
-        
-        //$faltantes = repuesto::where('cantidad', '=', 0)->get();
-        //$vista = view('Faltantes', compact('faltantes'));
-        //$vista = PDF::loadView('Login');
-        //$dompdf->loadHtml($vista);
-        //$dompdf->setPaper('A4', 'landscape');
-        //$dompdf->set_option('defaultFont', 'Arial');
-        //$dompdf->render();
-        //$dompdf->stream();
-
-        //return back();
-        $pdf = PDF::loadView('welcome');
-        return $pdf->download('archivo.pdf');
-    }
 }

@@ -79,11 +79,6 @@ Route::get('/', function () {
 
    Route::get('Repuestos/exportar', ['as' => 'Repuestos/exportar', 'uses' => 'RepuestosController@exportPDF']);
 
-    //Route::get('Repuestos/exportar', function () {
-    //    $pdf = PDF::loadView('welcome');
-    //    return $pdf->download('pruebapdf.pdf');
-    //});
-//acceso a los recursos vehiculos
 Route::resource('Revisiones', 'RevisionesController');
 
 Route::get('Revisiones/deleted/{placa}/{id}', ['as' => 'Revisiones/deleted', 'uses' => 'RevisionesController@borrar']);
@@ -103,6 +98,8 @@ Route::post('Revisiones/guardar', ['as' => 'Revisiones/guardar', 'uses' => 'Revi
 Route::get('Revisiones/ver/{id}/{placa}', ['as' => 'Revisiones/ver', 'uses' => 'RevisionesController@ver']);
 
 Route::get('Revisiones/existente/{placa}',['as'=> 'Revisiones/existente', 'uses'=>'RevisionesController@existente']);
+
+Route::get('Revisiones/finalizar/{id}', ['as'=>'Revisiones/finalizar', 'uses'=>'RevisionesController@finalizar']);
 
 Route::get('Revisiones/tomar/{placa}/{id}',['as'=>'Revisiones/tomar', 'uses'=>'RevisionesController@tomar']);
 

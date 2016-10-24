@@ -80,7 +80,7 @@
 
                                             <td>
                                                 <a class="btn btn-primary btn-xs" href="{{ route('Revisiones.edit',['id' => $re->id ] )}}" >Ver Detalle</a>
-                                                <a class="btn btn-success btn-xs" href="{{ route('Revisiones.edit',['id' => $re->id ] )}}" onclick="return confirmar()">Finalizar</a>
+                                                <a class="btn btn-success btn-xs" href="{{ route('Revisiones/finalizar',['id' => $re->id ] )}}" onclick="return confirmar('{{ $re->nombre }}')">Finalizar</a>
                                             </td>
                                         </tr>
                                     @endif
@@ -96,9 +96,9 @@
         </div>
     </div>
     <script>
-        function confirmar()
+        function confirmar(nombre)
         {
-            if(confirm('¿Esta seguro de cambiar que desea finalizar esta revision?'))
+            if(confirm('¿Esta seguro que desea finalizar la revision "'+ nombre +'"?'))
                 return true;
             else
                 return false;

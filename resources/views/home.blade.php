@@ -4,11 +4,11 @@
 
                 @if(Auth::user()->puesto == 1)
                     <script type="text/javascript">
-                        window.location="/Proyecto_Taller/public/Oficina";
+                        window.location="{{url('/Oficina')}}";
                     </script>
                 @elseif(Auth::user()->puesto == 2)
                     <script type="text/javascript">
-                        window.location="/Proyecto_Taller/public/Taller";
+                        window.location="{{url('/Taller')}}";
                     </script>
                 @else
                     <div class="container">

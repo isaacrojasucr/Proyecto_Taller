@@ -116,7 +116,9 @@ class RevisionesController extends Controller
         
         $revision = revision_calendarizada::find($id);
         
-        return view('VerRevision', compact('revision', 'placa'));
+        $vehiculo = vehiculo::find($placa);
+        
+        return view('VerRevision', compact('revision', 'vehiculo'));
         
     }
     
@@ -148,5 +150,18 @@ class RevisionesController extends Controller
         $somete->save();
 
         return redirect('Revisiones/todas/'.$placa);
+    }
+
+    public function finalizar($id){
+
+        $revision = revision_calendarizada::find($id);
+
+        $revision->estado = 2;
+
+        $revision->save();
+
+        return back();
+
+
     }
 }

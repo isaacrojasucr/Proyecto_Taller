@@ -27,7 +27,7 @@
                         <td>{{ $respuesto->vida_util + $respuesto->km_inicial}}</td>
                         <td>{{ $respuesto->cantidad  }}</td>
                         <td>
-                            <a class="btn btn-primary btn-xs" href="{{ route('Vehiculos/Cambiar',['placa' => $placa,'id' => $respuesto->id ] )}}" onclick="return confirmar()" >Cambiar</a>
+                            <a class="btn btn-primary btn-xs" href="{{ route('Vehiculos/Cambiar',['placa' => $placa,'id' => $respuesto->id ] )}}" onclick="return confirmar('{{$respuesto->nombre}}')" >Cambiar</a>
                         </td>
 
                     </tr>
@@ -38,9 +38,9 @@
     </div>
 
     <script>
-        function confirmar()
+        function confirmar( nombre )
         {
-            if(confirm('¿Esta seguro de cambiar el siguiente respuesto?'))
+            if(confirm('¿Esta seguro de cambiar el siguiente respuesto ('+ nombre +')?'))
                 return true;
             else
                 return false;
