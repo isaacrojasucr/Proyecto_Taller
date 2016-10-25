@@ -14,6 +14,7 @@
         <a href="{{ route('Vehiculos.create') }}" class="btn btn-primary">Nuevo</a>
         {!! Form::close() !!}
         <br>
+
         <table class="table table-condensed table-striped table-bordered">
             <thead>
             <tr>

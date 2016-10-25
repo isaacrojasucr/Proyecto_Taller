@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\pertenece;
+use App\repuesto;
 use App\revisa;
 use App\User;
 use App\vehiculo;
@@ -35,7 +36,8 @@ class vehiculoController extends Controller
 
     public function index(){
         $vehiculos = vehiculo::where('habilitado','=',1)->get();
-
+        
+        
         return view('Vehiculos', compact('vehiculos'));
 
     }
@@ -128,8 +130,13 @@ class vehiculoController extends Controller
         $ve = vehiculo::find($placa);
 
         $act->km_inicial = $ve->km_total;
+        
+        $re = repuesto::find($act->id_repuesto);
+        
+        $re->cantidad = ($re->cantidad) - 1;
 
 
+        $re->save();
         $act->save();
         return back();
     }

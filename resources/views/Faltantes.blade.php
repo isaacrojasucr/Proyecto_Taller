@@ -8,6 +8,17 @@
 
     <div class="row">
 
+        <?php
+        date_default_timezone_set('America/Costa_Rica');
+
+        ?>
+
+        <h2 align="center">Universidad de Costa Rica, Sede Occidente</h2>
+        <h2 align="center">Oficina de Servicios Generales</h2>
+        <h2 align="center">Faltantes</h2>
+
+        <h3 align="center"><?=date('m/d/Y g:ia');?></h3>
+
         <br>
         <br>
         <br>
@@ -35,7 +46,7 @@
     </div>
 
     <input name="Imprimir" id="Imprimir"  class="btn btn-success btn-m" type="submit" onclick="DescargarPDF('reporte', 'Archivo')" value="Descargar PDF"></input>
-
+    <input type="button" name="imprimir" value="Imprimir" class="btn btn-primary btn-m" onclick="window.print();">
 </div>
 
     <script>

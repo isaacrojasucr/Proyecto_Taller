@@ -96,8 +96,15 @@ class tallerController extends Controller
 
         $act->km_inicial = $ve->km_total;
 
+        $re = repuesto::find($act->id_repuesto);
+           
+
+        $re->cantidad = ($re->cantidad) - 1;
+
+        $re->save();
 
         $act->save();
+
         return back();
     }
     

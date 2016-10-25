@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Hash;
 use App\Http\Requests;
 use App\User;
+use Mockery\CountValidator\Exception;
 
 class usuarioController extends Controller
 {
@@ -14,7 +15,6 @@ class usuarioController extends Controller
 
     public function store(Request $request) {
 
-        
 
         $usuario = new User();
         $usuario->habilitado = 1;
@@ -25,6 +25,29 @@ class usuarioController extends Controller
         $usuario->puesto = $request->puesto;
         $contrasena = $request->contrasena;
         $usuario->password = Hash::make($contrasena);
+
+
+        $usu = User::all();
+
+        foreach ($usu as  $us){
+
+            if ($us->cedula == $usuario->cedula){
+
+                \Session::flash('message', 'El numero de cedula ingresado ya se encuentra registrado');
+                return back();
+
+            }
+
+            if ($us->email == $usuario->email){
+
+                \Session::flash('message', 'El correo eletronico ingresado ya se encuentra registrado');
+                return back();
+
+            }
+
+        }
+
+
         $usuario->save();
 
         return redirect('Usuarios');

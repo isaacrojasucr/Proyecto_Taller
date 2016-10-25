@@ -7,6 +7,9 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 {!! Form::open(['route' => 'Usuarios.store', 'method' => 'post']) !!}
+                @if(Session::has('message'))
+                    <p class="alert alert-danger">{{ Session::get('message') }}</p>
+                @endif
                 <div class="form-group">
                     {!! Form::label('cedula', 'Cedula') !!}
                     {!! Form::number('cedula', null, ['class' => 'form-control' , 'required' => 'required']) !!}
@@ -37,5 +40,6 @@
                 {!! Form::close() !!}
             </div>
         </div>
+        <br><br>
     </div>
 @endsection
