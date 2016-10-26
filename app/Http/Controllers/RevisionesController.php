@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\vehiculo;
 use App\somete;
 use App\Http\Requests;
+use App\repuesto;
+use App\pertenece;
+use Illuminate\Support\Facades\Redirect;
+
 
 class RevisionesController extends Controller
 {
@@ -92,23 +96,25 @@ class RevisionesController extends Controller
 
     }
 
-    public function edit ($id) {
+    public function edit ($id, $placa) {
         $revision = revision_calendarizada::find($id);
 
-        return view('ActualizarRevision',compact('revision'));
+        return view('ActualizarRevision',compact('revision', 'placa'));
 
     }
     
     public function update ($id,Request $request) {
         $revision = revision_calendarizada::find($id);
-        
+
+        $placa = $request->id;
+
         $revision->nombre = $request->nombre;
         $revision->km_revision = $request->km_revision;
         $revision->detalle = $request->detalle;
         
         $revision->save();
-        
-        return redirect('Revisiones');
+
+        return Redirect('Vehiculos/'. $placa .'/edit');
         
     }
     
@@ -156,7 +162,13 @@ class RevisionesController extends Controller
 
         $revision = revision_calendarizada::find($id);
 
-        $revision->estado = 2;
+        if ($revision->estado == 1){
+
+            $revision->estado = 2;
+
+        }else{
+            $revision->estado = 4;
+        }
 
         $revision->save();
 
@@ -164,4 +176,29 @@ class RevisionesController extends Controller
 
 
     }
+
+    public function almacenar(Request $request){
+        $revision =  new revision_calendarizada();
+
+        $vehiculo = vehiculo::find($request->placa);
+
+        $revision->nombre = $request->nombre;
+        $revision->detalle = $request->detalle;
+        $revision->km_revision = $request->km_revision;
+        $revision->km_inicial = $vehiculo->km_total;
+        $revision->estado = 3;
+        $revision->save();
+
+        $id = \DB::table('revision_calendarizadas')->max('id');
+
+        $somete = new somete();
+        $somete->placa_vehiculo = $vehiculo->placa;
+        $somete->id_revision = $id;
+        $somete->save();
+
+
+
+        return redirect('Taller');
+    }
+    
 }

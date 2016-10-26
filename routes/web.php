@@ -62,6 +62,8 @@ Route::get('/', function () {
 //ruta para realizar busqueda de registros.
     Route::post('Vehiculos/buscar', ['as' => 'Vehiculos/buscar', 'uses' => 'vehiculoController@buscar']);
 
+    Route::post('Vehiculo/buscarReportes',  ['as'=>'Vehiculo/buscarReportes', 'uses'=>'vehiculoController@buscarReportes']);
+
     Route::post('Vehiculos/reportar', ['as' => 'Vehiculos/reportar', 'uses' => 'vehiculoController@reportar']);
 
     Route::get('Vehiculos/repuesto/{id}', ['as' => 'Vehiculos/repuesto', 'uses'=> 'vehiculoController@repuestos']);
@@ -76,8 +78,6 @@ Route::get('/', function () {
     Route::get('Repuestos/eliminar/{placa}', ['as' => 'Repuestos/eliminar', 'uses' => 'RepuestosController@eliminar']);
 //ruta para realizar busqueda de registros.
     Route::post('Repuestos/buscar', ['as' => 'Repuestos/buscar', 'uses' => 'RepuestosController@buscar']);
-
-   Route::get('Repuestos/exportar', ['as' => 'Repuestos/exportar', 'uses' => 'RepuestosController@exportPDF']);
 
 Route::resource('Revisiones', 'RevisionesController');
 
@@ -95,11 +95,17 @@ Route::get('Revisiones/nuevo/{placa}',['as'=>'Revisiones/nuevo', 'uses' => 'Revi
 
 Route::post('Revisiones/guardar', ['as' => 'Revisiones/guardar', 'uses' => 'RevisionesController@guardar']);
 
+Route::post('Revisiones/almacenar', ['as'=> 'Revisiones/almacenar', 'uses'=>'RevisionesController@almacenar']);
+
 Route::get('Revisiones/ver/{id}/{placa}', ['as' => 'Revisiones/ver', 'uses' => 'RevisionesController@ver']);
 
 Route::get('Revisiones/existente/{placa}',['as'=> 'Revisiones/existente', 'uses'=>'RevisionesController@existente']);
 
 Route::get('Revisiones/finalizar/{id}', ['as'=>'Revisiones/finalizar', 'uses'=>'RevisionesController@finalizar']);
+
+Route::get('Revisiones/finalizar/{id}/{placa}', ['as'=>'Revisiones/finalizar', 'uses'=>'vehiculoController@finalizar']);
+
+Route::get('Revisiones/edit/{id}/{placa}', ['as'=>'Revisiones/edit', 'uses'=>'RevisionesController@edit']);
 
 Route::get('Revisiones/tomar/{placa}/{id}',['as'=>'Revisiones/tomar', 'uses'=>'RevisionesController@tomar']);
 
@@ -116,9 +122,16 @@ Route::post('Taller/continuar',['as'=>'Taller/continuar', 'uses'=>'tallerControl
 Route::get('Taller/asignado/{id}/{placa}', ['as'=>'Taller/asignado', 'uses'=>'tallerController@asignado']);
 
 Route::post('Taller/almacenar',['as'=>'Taller/almacenar', 'uses' => 'tallerController@almacenar']);
+
+Route::get('retornar/{placa}/{ante}/{usu}', ['as'=>'retornar', 'uses'=>'vehiculoController@retornar']);
+
 Auth::routes();
 
 Route::get('home', 'HomeController@index');
+
 Route::get('home/exit', 'homeController@salida');
 
-Route::get('otro', 'HomeController@otros');
+Route::get('home/asignar', ['as'=>'home/asignar', 'uses'=>'homeController@preasignacion']);
+
+Route::post('home/Correcion',['as'=>'home/Correcion', 'uses'=>'homeController@nuevaCorrectiva']);
+

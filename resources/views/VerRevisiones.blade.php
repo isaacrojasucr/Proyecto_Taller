@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="row">
-            <h1 align="center"> <span class="label label-info">Revisiones correspondientes a la placa {{$placa}} </span></h1>
+            <h1 align="center"> <span>Revisiones correspondientes a la placa {{$placa}} </span></h1>
             <br>
 
             <a href="{{ route('Revisiones/nuevo', ['Placa' =>$placa]) }}" class="btn btn-primary">Nuevo</a>
@@ -24,29 +24,27 @@
                 </thead>
                 <tbody>
                 @foreach($revisiones as $revision)
-                    @if($revision->estado != 3)
                     <tr>
                         <td>{{ $revision->nombre }}</td>
                         <td>{{ $revision->km_revision}}</td>
                         <td>{{ $revision->detalle}}</td>
-                        @if($revision->estado == 1)
+                        @if($revision->estado == 1 || $revision->estado == 3)
                             <td>Pendiente</td>
                         @else
                             <td>Finalizada</td>
                         @endif
                         <td>
-                            @if($revision->estado == 1)
+                            @if($revision->estado == 1 || $revision->estado == 3)
                             <a class="btn btn-primary btn-xs" href="{{ route('Revisiones.edit',['id' => $revision->id ] )}}" >Editar</a>
                             @endif
                             <a class="btn btn-success btn-xs" href="{{ route('Revisiones/ver',['id' => $revision->id,'placa' => $placa ] )}}" >Ver</a>
-                            @if($revision->estado == 1)
+                            @if($revision->estado == 1 || $revision->estado == 3)
                             <a class="btn btn-danger btn-xs" href="{{ route('Revisiones/deleted',['placa' => $placa, 'id' => $revision->id] )}}" >Eliminar</a>
                             @endif
                         </td>
 
 
                     </tr>
-                    @endif
                 @endforeach
                 </tbody>
             </table>

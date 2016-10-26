@@ -72,7 +72,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($rep as $re)
-                                    @if(($re->vida_util + $re->km_inicial) < $ve->km_total)
+                                    @if(($re->vida_util + $re->km_inicial) <= $ve->km_total)
                                         <tr>
                                             <td>{{ $re->nombre }}</td>
                                             <td>{{ ($re->vida_util + $re->km_inicial)}}</td>

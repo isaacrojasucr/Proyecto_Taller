@@ -8,8 +8,9 @@ use App\revisa;
 use App\User;
 use App\vehiculo;
 use Illuminate\Http\Request;
-
+use App\revision_calendarizada;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 class vehiculoController extends Controller
@@ -59,7 +60,22 @@ class vehiculoController extends Controller
 
     public function edit($id){
         $vehiculo = Vehiculo::find($id);
-        return \View::make('ActualizarVehiculo',compact('vehiculo'));
+
+        $repuestos = \DB::table('vehiculos')
+            ->join('perteneces','vehiculos.placa','=','perteneces.placa_vehiculo')
+            ->join('repuestos','perteneces.id_repuesto','=','repuestos.id')
+            ->where('vehiculos.placa','=',$vehiculo->placa)
+            ->select('repuestos.vida_util', 'repuestos.nombre', 'repuestos.cantidad', 'perteneces.id', 'perteneces.km_inicial')
+            ->get();
+
+        $revisiones = \DB::table('vehiculos')
+            ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
+            ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
+            ->where('vehiculos.placa','=',$vehiculo->placa)
+            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
+            ->get();
+
+        return \View::make('ActualizarVehiculo',compact('vehiculo','repuestos', 'revisiones'));
 
     }
 
@@ -81,9 +97,26 @@ class vehiculoController extends Controller
 
         $vehiculo->save();
 
-        $vehiculos = vehiculo::all();
+        return back();
 
-        return view('Vehiculos', compact('vehiculos'));
+    }
+
+    public function finalizar($id, $placa){
+
+        $revision = revision_calendarizada::find($id);
+
+        if ($revision->estado == 1){
+
+            $revision->estado = 2;
+
+        }else{
+            $revision->estado = 4;
+        }
+
+        $revision->save();
+
+        return Redirect('Vehiculos/'. $placa .'/edit');
+
 
     }
     
@@ -144,12 +177,54 @@ class vehiculoController extends Controller
     public function reportes($placa){
 
         $reportes = revisa::where('placa_vehiculo','=',$placa)
+                            ->orderBy('created_at', 'DESC')
                             ->get();
 
         $usuarios = User::all();
         
         return view('Reportes', compact('placa', 'reportes', 'usuarios')); 
 
+    }
+
+    public function buscarReportes(Request $request){
+        $usuarios = User::where('name','like','%'.$request->nombre.'%')->get();
+
+        $placa = $request->id;
+
+        $reportes =  null;
+        foreach ($usuarios as $usu){
+
+            $reportes = revisa::where('placa_vehiculo','=',$placa)
+                ->where('id_usuario','=',$usu->id)
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        }
+
+
+        return view('Reportes', compact('placa', 'reportes', 'usuarios'));
+
+    }
+
+    public function retornar ($placa, $ante, $usu){
+        
+        $vehiculo = vehiculo::find($placa);
+
+
+        $ulti= $vehiculo->km_total;
+
+        $vehiculo->km_total = $ante;
+
+        $vehiculo->save();
+
+        $revisa =  new revisa();
+        $revisa->id_usuario = $usu;
+        $revisa->placa_vehiculo = $vehiculo->placa;
+        $revisa->km_anterior= $ulti;
+        $revisa->save();
+        
+        return back();
+        
+        
     }
 
 

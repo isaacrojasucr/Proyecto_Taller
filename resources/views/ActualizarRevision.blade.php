@@ -10,6 +10,7 @@
             <div class="col-md-10 col-md-offset-1">
                 {!! Form::model($revision, ['method' => 'PATCH', 'action' => ['RevisionesController@update', $revision->id]]) !!}
 
+                {!! Form::hidden('id', $placa) !!}
                 <div class="form-group">
                     {!! Form::label('nombre', 'Descripción') !!}
                     {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
@@ -23,11 +24,21 @@
                     {{ Form::textarea('detalle', null, ['class' => "form-control"]) }}
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('Enviar', ['class' => 'btn btn-success ' ] ) !!}
+                    {!! Form::submit('Guardar', ['class' => 'btn btn-success ' ] ) !!}
+                    <a class="btn btn-primary" href="{{ route('Revisiones/finalizar',['id' => $revision->id , 'placa'=>$placa] )}}" onclick="return confirmar('{{ $revision->nombre }}')">Finalizar</a>
                 </div>
                 {!! Form::close() !!}
             </div>
         </div>
         </br></br></br>
     </div>
+    <script>
+        function confirmar(nombre)
+        {
+            if(confirm('¿Esta seguro que desea finalizar la revision "'+ nombre +'"?'))
+                return true;
+            else
+                return false;
+        }
+    </script>
 @endsection

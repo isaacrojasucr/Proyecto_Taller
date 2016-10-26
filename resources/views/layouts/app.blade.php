@@ -70,7 +70,6 @@
                                     <li><a href="{{url('/Faltantes')}}"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Faltantes</a></li>
 
                                 @endif
-                            <li><a href="{{url('/Revisiones')}}"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Revisiones</a></li>
                             @endif
                             <li>
 
@@ -148,7 +147,7 @@
                                     <ul class="nav navbar-nav">
                                         <li><a href="{{route('Taller/asignar')}}">Asignar repuesto</a></li>
                                         <li><a href="{{ route('Repuestos.create') }}">Agregar repuesto</a></li>
-                                        <li><a href="#">Revision de corrección</a></li>
+                                        <li><a href="{{route('home/asignar')}}">Revision de corrección</a></li>
                                     </ul>
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->

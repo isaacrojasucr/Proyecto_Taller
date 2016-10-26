@@ -72,15 +72,14 @@
                                 </thead>
                                 <tbody>
                                 @foreach($rev as $re)
-                                    @if($re->estado == 1 && $re->km_revision < $ve->km_total)
+                                    @if($re->estado == 1 || $re->estado == 3   && $re->km_revision <= $ve->km_total)
 
                                         <tr>
                                             <td>{{ $re->nombre }}</td>
                                             <td>{{ $re->km_revision}}</td>
 
                                             <td>
-                                                <a class="btn btn-primary btn-xs" href="{{ route('Revisiones.edit',['id' => $re->id ] )}}" >Ver Detalle</a>
-                                                <a class="btn btn-success btn-xs" href="{{ route('Revisiones/finalizar',['id' => $re->id ] )}}" onclick="return confirmar('{{ $re->nombre }}')">Finalizar</a>
+                                                <a class="btn btn-primary btn-xs" href="{{ route('Revisiones/edit',['placa'=>$ve->placa,'id' => $re->id,  ] )}}" >Ver Detalle</a>
                                             </td>
                                         </tr>
                                     @endif

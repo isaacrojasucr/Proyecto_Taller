@@ -47,4 +47,32 @@ class HomeController extends Controller
     public function salida (){
         return view('salida');
     }
+
+    public function preasignacion(){
+
+        $temp = vehiculo::all();
+
+        $placas = collect([]);
+        foreach ($temp as $vehiculo){
+            if ($vehiculo->habilitado==1){
+                $str = $vehiculo->marca. ', '. $vehiculo->modelo. ', Placa: '. $vehiculo->placa;
+
+                $placas->put($vehiculo->placa, $str);
+
+
+            }
+        }
+
+        return view('sele', compact('placas'));
+    }
+
+    public function nuevaCorrectiva(Request $request){
+
+        $ve = vehiculo::find($request->placa);
+
+        $placa = $request->placa;
+
+        return view('RevisionCorreccion',compact('placa', 've'));
+
+    }
 }
