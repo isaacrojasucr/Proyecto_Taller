@@ -58,11 +58,11 @@
                         <ul class="nav navbar-nav">
                             @if(Auth::user()->puesto != 3)
                             @if(Auth::user()->puesto == 1)
-                            <li class="active"><a href="{{url('/Oficina')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
+                            <li ><a href="{{url('/Oficina')}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             <li><a href="{{url('/Usuarios')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuarios</a></li>
                             @endif
                             @if(Auth::user()->puesto == 2)
-                                <li class="active"><a href="{{url('/Taller')}} "><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
+                                <li ><a href="{{url('/Taller')}} "><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             @endif
                             <li><a href="{{url('/Revisiones')}}"><span class="glyphicon glyphicon-dashboard"></span> Revisiones</a></li>
                             <li><a href="{{url('/Vehiculos')}}"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Vehiculos</a></li>

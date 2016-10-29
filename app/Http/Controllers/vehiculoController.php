@@ -44,7 +44,11 @@ class vehiculoController extends Controller
 
          $vehiculo->save();
 
-        return redirect(Vehiculos);
+        return redirect('/Vehiculos');
+
+//        $vehiculos = vehiculo::where('habilitado','=',1)->get();
+//
+//        return view('Vehiculos', compact('vehiculos'));
     }
 
     public function index(){
@@ -64,7 +68,8 @@ class vehiculoController extends Controller
         $vehiculo = vehiculo::find($placa);
         $vehiculo->habilitado = 0;
 
-        $vehiculo.save();
+        $vehiculo->delete();
+        
 
         return redirect('Vehiculos');
 
