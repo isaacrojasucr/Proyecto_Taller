@@ -64,8 +64,9 @@
                             @if(Auth::user()->puesto == 2)
                                 <li class="active"><a href="{{url('/Taller')}} "><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             @endif
+                            <li><a href="{{url('/Revisiones')}}"><span class="glyphicon glyphicon-dashboard"></span> Revisiones</a></li>
                             <li><a href="{{url('/Vehiculos')}}"><span class="glyphicon glyphicon-bed" aria-hidden="true"></span> Vehiculos</a></li>
-                            <li><a href="{{url('/Repuestos')}}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Respuestos</a> </li>
+                            <li><a href="{{url('/Repuestos')}}"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Respuestos</a> </li>
                             @if(Auth::user()->puesto == 1)
                                     <li><a href="{{url('/Faltantes')}}"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Faltantes</a></li>
 

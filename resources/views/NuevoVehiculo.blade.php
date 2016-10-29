@@ -6,6 +6,9 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             {!! Form::open(['route' => 'Vehiculos.store', 'method' => 'post']) !!}
+            @if(Session::has('message'))
+                <p class="alert alert-danger">{{ Session::get('message') }}</p>
+            @endif
             <div class="form-group">
                 {!! Form::label('placa', 'Placa') !!}
                 {!! Form::text('placa', null, ['class' => 'form-control' , 'required' => 'required']) !!}

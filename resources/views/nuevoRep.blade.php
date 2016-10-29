@@ -21,7 +21,7 @@
                     {!! Form::number('vida_util', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('Enviar', ['class' => 'btn btn-success ' ] ) !!}
+                    {!! Form::submit('Guardar', ['class' => 'btn btn-success ' ] ) !!}
                 </div>
                 {!! Form::close() !!}
             </div>

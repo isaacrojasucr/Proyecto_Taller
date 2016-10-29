@@ -35,7 +35,7 @@
                     {!! Form::select('puesto', array('2' => 'Mecanico(a)', '3' => 'Chofer'),null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('Enviar', ['class' => 'btn btn-success ' ] ) !!}
+                    {!! Form::submit('Guardar', ['class' => 'btn btn-success ' ] ) !!}
                 </div>
                 {!! Form::close() !!}
             </div>

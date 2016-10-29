@@ -22,19 +22,21 @@ class RevisionesController extends Controller
 
     public function index (){
 
-        $vehiculos = vehiculo::where('habilitado','=',1)->get();
+        $revisiones = revision_calendarizada::all();
 
-        return view('Revisiones', compact('vehiculos'));
+        return view('VerRevisiones', compact('revisiones'));
     }
     
     public function todas ($placa) {
-        $revisiones = \DB::table('vehiculos')
-            ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
-            ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
-            ->where('vehiculos.placa','=',$placa)
-            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
-            ->get();
-        return view('VerRevisiones', compact('placa','revisiones'));
+        $revisiones = revision_calendarizada::all();
+        return view('VerRevisiones', compact('revisiones'));
+    }
+
+    public function editar($id){
+        
+        $revision = revision_calendarizada::find($id);
+
+        return view('ActRev',compact('revision'));
     }
 
     public function buscar (Request $request) {
@@ -73,7 +75,7 @@ class RevisionesController extends Controller
             ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
             ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
             ->where('vehiculos.placa','=',$placa)
-            ->select('revision_calendarizadas.estado','revision_calendarizadas.id','revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
+            ->select('revision_calendarizadas.estado','revision_calendarizadas.id','revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle','revision_calendarizadas.created_at', 'revision_calendarizadas.updated_at')
             ->get();
 
         return view('VerRevisiones', compact('placa','revisiones'));
@@ -90,9 +92,20 @@ class RevisionesController extends Controller
             ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
             ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
             ->where('vehiculos.placa','=',$placa)
-            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
+            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle', 'revision_calendarizadas.created_at', 'revision_calendarizadas.updated_at')
             ->get();
         return view('VerRevisiones', compact('placa','revisiones'));
+
+    }
+
+    public function eliminar ($id){
+        $somete = somete::where('id_revision','=',$id);
+        $somete->delete();
+
+        $revision = revision_calendarizada::find($id);
+        $revision->delete();
+
+        return back();
 
     }
 
@@ -117,6 +130,19 @@ class RevisionesController extends Controller
         return Redirect('Vehiculos/'. $placa .'/edit');
         
     }
+
+    public function actualizar(Request $request) {
+        $revision = revision_calendarizada::find($request->id);
+
+
+        $revision->nombre = $request->nombre;
+        $revision->km_revision = $request->km_revision;
+        $revision->detalle = $request->detalle;
+
+        $revision->save();
+
+        return redirect('Revisiones');
+    }
     
     public function ver ($id,$placa){
         
@@ -125,6 +151,13 @@ class RevisionesController extends Controller
         $vehiculo = vehiculo::find($placa);
         
         return view('VerRevision', compact('revision', 'vehiculo'));
+        
+    }
+    
+    public function view($id){
+        $revision = revision_calendarizada::find($id);
+
+        return view('VerRev', compact('revision'));
         
     }
     

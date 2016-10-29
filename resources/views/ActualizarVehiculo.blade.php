@@ -39,13 +39,28 @@
             </div>
         </div>
         <div class="col-sm-6" >
+            <style>
+
+            </style>
+
             <div class="panel-group">
 
                 <div class="panel panel-primary">
                     <div class="panel-heading"align="center">Repuestos </div>
                     <div class="panel-body">
-
-                        <table class="table table-condensed table-striped table-bordered">
+                        {!! Form::open(['route' => 'Vehiculos/buscarRep', 'method' => 'post', 'novalidate', 'class' => 'form-inline']) !!}
+                        {!! Form::hidden('id', $vehiculo->placa) !!}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name = "buscar" placeholder="Nombre de repuesto" >
+                        </div>
+                        <button type="submit" class="btn btn-default">Buscar</button>
+                        <a class="btn btn-primary" href="{{ route('Vehiculos.edit',['id' => $vehiculo->placa] )}}" >Todos</a>
+                        <a href="{{ route('Vehiculo/nuevo', ['Placa' =>$vehiculo->placa]) }}" class="btn btn-primary">Nuevo</a>
+                        <a href="{{ route('Vehiculo/asignar', ['Placa' =>$vehiculo->placa]) }}" class="btn btn-primary">Existente</a>
+                        {!! Form::close() !!}
+                        <br><br>
+                        <div style="height:272px;overflow:scroll;">
+                        <table class="table table-condensed table-striped table-bordered " >
                             <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -55,13 +70,13 @@
 
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                             @foreach($repuestos as $respuesto)
                                 <tr>
                                     <td>{{ $respuesto->nombre }}</td>
-                                    <td>{{ $respuesto->vida_util + $respuesto->km_inicial}}</td>
-                                    <td>{{ $respuesto->cantidad  }}</td>
-                                    <td>
+                                    <td >{{ $respuesto->vida_util + $respuesto->km_inicial}}</td>
+                                    <td >{{ $respuesto->cantidad  }}</td>
+                                    <td >
                                         <a class="btn btn-primary btn-xs" href="{{ route('Vehiculos/Cambiar',['placa' => $vehiculo->placa,'id' => $respuesto->id ] )}}" onclick="return confirmar('{{$respuesto->nombre}}')" >Cambiar</a>
                                     </td>
 
@@ -69,7 +84,7 @@
                             @endforeach
                             </tbody>
                         </table>
-
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,13 +95,16 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading"align="center">Revisiones</div>
                     <div class="panel-body">
-
+                        <a href="{{ route('Revisiones/nuevo', ['Placa' =>$vehiculo->placa]) }}" class="btn btn-primary">Nuevo</a>
+                        <a href="{{ route('Revisiones/existente', ['Placa' =>$vehiculo->placa]) }}" class="btn btn-primary">Existente</a>
+                        <br><br><br>
                         <table class="table table-condensed table-striped table-bordered">
                             <thead>
                             <tr>
                                 <th>Descripcion</th>
                                 <th>Km de Revision</th>
                                 <th>Detalle</th>
+                                <th>Fecha</th>
                                 <th>Estado</th>
                                 <th>Acción</th>
                             </tr>
@@ -101,12 +119,15 @@
 
                                         @if($revision->km_revision <= $vehiculo->km_total)
                                             @if($revision->estado == 3)
+                                                <td>{{$revision->updated_at}}</td>
                                                 <td>Pendiente (Correcion)</td>
                                                 @else
+                                                <td>{{$revision->updated_at}}</td>
                                                 <td>Pendiente</td>
                                             @endif
 
                                         @elseif($revision->km_revision > $vehiculo->km_total)
+                                            <td>{{$revision->updated_at}}</td>
                                             <td>Programada</td>
                                         @endif
                                         <td>

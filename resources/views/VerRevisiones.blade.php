@@ -4,13 +4,6 @@
 
     <div class="container">
         <div class="row">
-            <h1 align="center"> <span>Revisiones correspondientes a la placa {{$placa}} </span></h1>
-            <br>
-
-            <a href="{{ route('Revisiones/nuevo', ['Placa' =>$placa]) }}" class="btn btn-primary">Nuevo</a>
-            <a href="{{ route('Revisiones/existente', ['Placa' =>$placa]) }}" class="btn btn-primary">Existente</a>
-
-            <br>
             <br>
             <table class="table table-condensed table-striped table-bordered">
                 <thead>
@@ -18,6 +11,7 @@
                     <th>Descripcion</th>
                     <th>Km de Revision</th>
                     <th>Detalle</th>
+                    <th>Fecha</th>
                     <th>Estado</th>
                     <th>Acción</th>
                 </tr>
@@ -28,18 +22,22 @@
                         <td>{{ $revision->nombre }}</td>
                         <td>{{ $revision->km_revision}}</td>
                         <td>{{ $revision->detalle}}</td>
+
+
                         @if($revision->estado == 1 || $revision->estado == 3)
+                            <td>{{$revision->updated_at}}</td>
                             <td>Pendiente</td>
                         @else
+                            <td>{{$revision->created_at}}</td>
                             <td>Finalizada</td>
                         @endif
                         <td>
                             @if($revision->estado == 1 || $revision->estado == 3)
-                            <a class="btn btn-primary btn-xs" href="{{ route('Revisiones.edit',['id' => $revision->id ] )}}" >Editar</a>
+                            <a class="btn btn-primary btn-xs" href="{{ route('Revisiones/editar',['id' => $revision->id ] )}}" >Editar</a>
                             @endif
-                            <a class="btn btn-success btn-xs" href="{{ route('Revisiones/ver',['id' => $revision->id,'placa' => $placa ] )}}" >Ver</a>
+                            <a class="btn btn-success btn-xs" href="{{ route('Revisiones/view',['id' => $revision->id ] )}}" >Ver</a>
                             @if($revision->estado == 1 || $revision->estado == 3)
-                            <a class="btn btn-danger btn-xs" href="{{ route('Revisiones/deleted',['placa' => $placa, 'id' => $revision->id] )}}" >Eliminar</a>
+                            <a class="btn btn-danger btn-xs" href="{{ route('Revisiones/eliminar',['id' => $revision->id] )}}" >Eliminar</a>
                             @endif
                         </td>
 

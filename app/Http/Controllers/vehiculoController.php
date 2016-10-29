@@ -30,7 +30,19 @@ class vehiculoController extends Controller
         $vehiculo->marca = $request->marca;
         $vehiculo->km_total = $request->km_total;
 
-        $vehiculo->save();
+        $todos = vehiculo::all();
+
+         foreach ($todos as $t){
+             if($t->placa == $request->placa){
+                 \Session::flash('message', 'El numero de placa ya se encuentra registrado');
+                 return back();
+
+             }
+
+         }
+
+
+         $vehiculo->save();
 
         return redirect(Vehiculos);
     }
@@ -72,11 +84,48 @@ class vehiculoController extends Controller
             ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
             ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
             ->where('vehiculos.placa','=',$vehiculo->placa)
-            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle')
+            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle', 'revision_calendarizadas.created_at', 'revision_calendarizadas.updated_at')
             ->get();
 
         return \View::make('ActualizarVehiculo',compact('vehiculo','repuestos', 'revisiones'));
 
+    }
+
+    public function existente($placa){
+        $repuestos =  repuesto::all();
+
+        return view('existente', compact('placa', 'repuestos'));
+    }
+    
+    public function nuevo($placa){
+        return view('nuevoRep', compact('placa'));
+        
+    }
+    
+    public function buscarEdit(Request $request){
+
+        $placa = $request->id;
+
+
+        $repuestos = \DB::table('vehiculos')
+            ->join('perteneces','vehiculos.placa','=','perteneces.placa_vehiculo')
+            ->join('repuestos','perteneces.id_repuesto','=','repuestos.id')
+            ->where('vehiculos.placa','=',$placa)
+            ->where('nombre','like','%'.$request->buscar.'%')
+            ->select('repuestos.vida_util', 'repuestos.nombre', 'repuestos.cantidad', 'perteneces.id', 'perteneces.km_inicial')
+            ->get();
+
+
+        $revisiones = \DB::table('vehiculos')
+            ->join('sometes','vehiculos.placa','=','sometes.placa_vehiculo')
+            ->join('revision_calendarizadas','sometes.id_revision','=','revision_calendarizadas.id')
+            ->where('vehiculos.placa','=',$placa)
+            ->select('revision_calendarizadas.id', 'revision_calendarizadas.estado' ,'revision_calendarizadas.nombre','revision_calendarizadas.km_revision', 'revision_calendarizadas.detalle', 'revision_calendarizadas.created_at', 'revision_calendarizadas.updated_at')
+            ->get();
+
+        $vehiculo = Vehiculo::find($placa);
+
+        return \View::make('ActualizarVehiculo',compact('vehiculo','repuestos', 'revisiones'));
     }
 
     public function buscar(Request $request){

@@ -26,7 +26,7 @@
                     <br>
                     <br>
                     <div class="form-group">
-                        {!! Form::submit('continuar', ['class' => 'btn btn-success ' ] ) !!}
+                        {!! Form::submit('Continuar', ['class' => 'btn btn-success ' ] ) !!}
                     </div>
 
                     {!! Form::close() !!}

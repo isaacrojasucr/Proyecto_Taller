@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html >
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Oficina</title>
+@extends('layouts.app')
 
-    <!-- Fonts -->
+@section('content')
 
-    <!-- Styles -->
-
-</head>
-<body>
-
-<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
 
 <style>
     html, body {
         background-color: #fff;
         color: #636b6f;
-        font-family: 'Raleway';
         font-weight: 100;
         height: 100vh;
         margin: 0;
@@ -76,22 +63,11 @@
         <div class="title m-b-md">
             <img src="http://www.so.ucr.ac.cr/ucrfm/sites/default/files/logo-ucrso.png">
             <br>
-            Gracias por reportar la información adecuada
+            Reporte de kilometraje exitoso
             <br>
         </div>
 
-        <div class="links">
-            <a href="{{ url('/logout') }}"
-               onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                Cerrar Sesión
-            </a>
-            <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
 
-        </div>
     </div>
 </div>
-</body>
-</html>
+@endsection

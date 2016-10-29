@@ -31,6 +31,9 @@ Route::get('/', function () {
 
 
 
+
+
+
     Route::get('Oficina', 'oficinaController@index');
 
     Route::get('Usuarios', 'usuarioController@index');
@@ -72,6 +75,11 @@ Route::get('/', function () {
 
     Route::get('Vehiculos/Cambiar/{placa}/{id}', ['as'=>'Vehiculos/Cambiar', 'uses'=>'vehiculoController@cambiar']);
 
+    Route::post('Vehiculos/buscarRep',['as'=>'Vehiculos/buscarRep', 'uses'=>'vehiculoController@buscarEdit']);
+
+    Route::get('Vehiculo/asignar/{placa}',['as'=>'Vehiculo/asignar', 'uses'=>'vehiculoController@existente']);
+
+    Route::get('Vehiculo/nuevo/{placa}', ['as'=>'Vehiculo/nuevo', 'uses'=>'vehiculoController@nuevo']);
 //acceso a los recursos vehiculos
     Route::resource('Repuestos', 'RepuestosController');
 //una nueva ruta para eliminar registros con el metodo get
@@ -82,6 +90,8 @@ Route::get('/', function () {
 Route::resource('Revisiones', 'RevisionesController');
 
 Route::get('Revisiones/deleted/{placa}/{id}', ['as' => 'Revisiones/deleted', 'uses' => 'RevisionesController@borrar']);
+
+Route::get('Revisiones/eliminar/{id}', ['as' => 'Revisiones/eliminar', 'uses' => 'RevisionesController@eliminar']);
 
 Route::get('Revisiones/todas/{id}', ['as'=> 'Revisiones/todas','uses' => 'RevisionesController@todas']);
 //ruta para realizar busqueda de registros.
@@ -99,6 +109,8 @@ Route::post('Revisiones/almacenar', ['as'=> 'Revisiones/almacenar', 'uses'=>'Rev
 
 Route::get('Revisiones/ver/{id}/{placa}', ['as' => 'Revisiones/ver', 'uses' => 'RevisionesController@ver']);
 
+Route::get('Revisiones/view/{id}', ['as' => 'Revisiones/view', 'uses' => 'RevisionesController@view']);
+
 Route::get('Revisiones/existente/{placa}',['as'=> 'Revisiones/existente', 'uses'=>'RevisionesController@existente']);
 
 Route::get('Revisiones/finalizar/{id}', ['as'=>'Revisiones/finalizar', 'uses'=>'RevisionesController@finalizar']);
@@ -106,6 +118,10 @@ Route::get('Revisiones/finalizar/{id}', ['as'=>'Revisiones/finalizar', 'uses'=>'
 Route::get('Revisiones/finalizar/{id}/{placa}', ['as'=>'Revisiones/finalizar', 'uses'=>'vehiculoController@finalizar']);
 
 Route::get('Revisiones/edit/{id}/{placa}', ['as'=>'Revisiones/edit', 'uses'=>'RevisionesController@edit']);
+
+Route::get('Revisiones/editar/{id}', ['as'=>'Revisiones/editar', 'uses'=>'RevisionesController@editar']);
+
+Route::post('Revisiones/actualizar',['as'=>'Revisiones/actualizar', 'uses'=>'RevisionesController@actualizar']);
 
 Route::get('Revisiones/tomar/{placa}/{id}',['as'=>'Revisiones/tomar', 'uses'=>'RevisionesController@tomar']);
 
