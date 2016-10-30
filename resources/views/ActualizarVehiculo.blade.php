@@ -27,7 +27,7 @@
                 {!! Form::text('modelo', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::label('modelo', 'Kilometraje') !!}
+                {!! Form::label('km_total', 'Kilometraje') !!}
                 {!! Form::number('km_total', null, ['class' => 'form-control' , 'required' => 'required']) !!}
             </div>
             <div class="form-group">

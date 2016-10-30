@@ -19,11 +19,11 @@
                     {!! Form::password('contrasena',['class' => 'form-control' , 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('full_name', 'Correo Institucional') !!}
+                    {!! Form::label('correo', 'Correo Institucional') !!}
                     {!! Form::email('correo', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('full_name', 'Nombre') !!}
+                    {!! Form::label('nombre', 'Nombre') !!}
                     {!! Form::text('nombre', null, ['class' => 'form-control' , 'required' => 'required']) !!}
                 </div>
                 <div class="form-group">
