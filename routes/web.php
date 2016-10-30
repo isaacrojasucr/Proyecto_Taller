@@ -145,9 +145,9 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index');
 
-Route::get('home/exit', 'homeController@salida');
+Route::get('home/exit', 'HomeController@salida');
 
-Route::get('home/asignar', ['as'=>'home/asignar', 'uses'=>'homeController@preasignacion']);
+Route::get('home/asignar', ['as'=>'home/asignar', 'uses'=>'HomeController@preasignacion']);
 
-Route::post('home/Correcion',['as'=>'home/Correcion', 'uses'=>'homeController@nuevaCorrectiva']);
+Route::post('home/Correcion',['as'=>'home/Correcion', 'uses'=>'HomeController@nuevaCorrectiva']);
 

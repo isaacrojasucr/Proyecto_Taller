@@ -19,16 +19,21 @@ class UserCanInsertVehiculoTest extends TestCase {
 
 //         $user = factory(App\User::class)->create();
         $user = new User(array('name' => 'mecanico'));
+        
+        $placa = '1223';
+        $marca = '122';
+        $modelo = '122';
+        $km_total = '122';
 
         $this->actingAs($user)
                 ->withSession(['foo' => 'bar'])
                 ->visit('/Vehiculos/create')
-                ->type('122', 'placa')
-                ->type('122', 'marca')
-                ->type('122', 'modelo')
-                ->type('122', 'km_total')
+                ->type($placa, 'placa')
+                ->type($marca, 'marca')
+                ->type($modelo, 'modelo')
+                ->type($km_total, 'km_total')
                 ->press('Enviar')
-                ->seeInDatabase('vehiculos', ['placa' => '122']);
+                ->seeInDatabase('vehiculos', ['placa' => $placa, 'marca' => $marca, 'modelo' => $modelo, 'km_total' => $km_total]);
 //                ->seePageIs('/Vehiculos');
     }
 
