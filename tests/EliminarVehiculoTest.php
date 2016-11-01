@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\User;
 //use PHPUnit_Framework_ExpectationFailedException as PHPUnitException;
 
-class EliminarRepuestoTest extends TestCase {
+class EliminarVehiculoTest extends TestCase {
 
     /**
      * A basic test example.
@@ -31,11 +31,11 @@ class EliminarRepuestoTest extends TestCase {
 //        $this->be($user) //You are now authenticated
             $this->actingAs($user)
                     ->withSession(['foo' => 'bar'])
-                    ->visit('Repuestos/eliminar/69')
-                    ->seePageIs('Repuestos');
-//        } catch (FatalThrowableError $e) {
+                    ->visit('Vehiculos/eliminar/1223')
+                    ->seePageIs('Vehiculos');
+//        } catch (NotFoundHttpException $e) {
 //            // force a fail:
-//            throw new PHPUnitException("EL REPUESTO QUE INTENTA ELIMINAR NO EXISTE EN LA BASE DE DATOS.");
+//            throw new PHPUnitException("EL VEHICULO QUE INTENTA ELIMINAR NO EXISTE EN LA BASE DE DATOS.");
 //        }
     }
 

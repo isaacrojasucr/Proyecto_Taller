@@ -4,10 +4,12 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <h1 align="center"> <span class="label label-info">Nuevo Vehiculo </span></h1>
+        <br>
         <div class="col-md-10 col-md-offset-1">
             {!! Form::open(['route' => 'Vehiculos.store', 'method' => 'post']) !!}
             @if(Session::has('message'))
-                <p class="alert alert-danger">{{ Session::get('message') }}</p>
+            <p class="alert alert-danger">{{ Session::get('message') }}</p>
             @endif
             <div class="form-group">
                 {!! Form::label('placa', 'Placa') !!}

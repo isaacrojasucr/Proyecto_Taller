@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\User;
 
-class InsertarRevisionTest extends TestCase {
+class EditarRevisionTest extends TestCase {
 
     use WithoutMiddleware;
 
@@ -15,25 +15,25 @@ class InsertarRevisionTest extends TestCase {
      * @test
      * @return void
      */
-    public function AgregarRevision() {
+    public function EditarRevision() {
 //        $this->assertTrue(true);
         $user = new User(array('name' => 'mecanico'));
         
         $nombre = 'RevisionPrueba';
-        $km_revision = '10';
-        $detalle = '133';
+        $km_revision = '90';
+        $detalle = 'nuevo detalle';
 
 
 //        $this->be($user) //You are now authenticated
         $this->actingAs($user)
                 ->withSession(['foo' => 'bar'])
-                ->visit('/Revisiones/nuevo/0')
+                ->visit('/Revisiones/edit/13/0')
 //                ->type('17', 'id')
                 ->type($nombre, 'nombre')
                 ->type($km_revision, 'km_revision')
                 ->type($detalle, 'detalle')
                 ->press('Guardar')
-                ->seePageIs('/Revisiones/guardar')
+                ->seePageIs('/Vehiculos/0/edit')
                 ->seeInDatabase('revision_calendarizadas', ['nombre' => $nombre, 'km_revision' => $km_revision, 'detalle' => $detalle]);
 
 //                ->type('1', 'id')
