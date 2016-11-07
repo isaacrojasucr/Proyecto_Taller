@@ -27,7 +27,7 @@ class EditarRevisionTest extends TestCase {
 //        $this->be($user) //You are now authenticated
         $this->actingAs($user)
                 ->withSession(['foo' => 'bar'])
-                ->visit('/Revisiones/edit/13/0')
+                ->visit('/Revisiones/edit/22/0')
 //                ->type('17', 'id')
                 ->type($nombre, 'nombre')
                 ->type($km_revision, 'km_revision')

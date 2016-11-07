@@ -21,7 +21,7 @@ class InsertarRevisionTest extends TestCase {
         
         $nombre = 'RevisionPrueba';
         $km_revision = '10';
-        $detalle = '133';
+        $detalle = 'detalle de la revision prueba';
 
 
 //        $this->be($user) //You are now authenticated

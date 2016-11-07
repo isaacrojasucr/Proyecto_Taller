@@ -17,12 +17,12 @@ class UsuariosTest extends TestCase {
     public function insertUsuario() {
         $user = new User(array('name' => 'admin'));
 
-        $cedula = '10522';
-        $nombre = '1042';
-        $correo = '1042@104';
-        $apellido = '1042';
+        $cedula = '207080097';
+        $nombre = 'Usuario Prueba';
+        $correo = 'usuarioP@104.com';
+        $apellido = 'Paniagua';
         $puesto = '2';
-        $contrasena = '1024';
+        $contrasena = 'patito';
 
 
 //        $this->be($user) //You are now authenticated

@@ -3,6 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <h1 align="center"> <span class="label label-info">Edicion del repuesto seleccionado</span></h1>
+        <br>
         <div class="col-md-10 col-md-offset-1">
             {!! Form::model($repuesto, ['method' => 'PATCH', 'action' => ['RepuestosController@update', $repuesto->id]]) !!}
             <div class="form-group">

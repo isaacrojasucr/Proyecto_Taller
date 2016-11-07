@@ -11,7 +11,7 @@ class EliminarRepuestoTest extends TestCase {
     /**
      * A basic test example.
      *
-     * @test
+     * @&test
      * @return void
      */
     public function testExample() {

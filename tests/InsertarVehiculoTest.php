@@ -20,10 +20,10 @@ class UserCanInsertVehiculoTest extends TestCase {
 //         $user = factory(App\User::class)->create();
         $user = new User(array('name' => 'mecanico'));
         
-        $placa = '1223';
-        $marca = '122';
-        $modelo = '122';
-        $km_total = '122';
+        $placa = '1929';
+        $marca = 'Ferrary';
+        $modelo = 'Enzo';
+        $km_total = '12023';
 
         $this->actingAs($user)
                 ->withSession(['foo' => 'bar'])
