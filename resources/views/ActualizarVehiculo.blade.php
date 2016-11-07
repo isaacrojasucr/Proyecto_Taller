@@ -64,7 +64,7 @@
                             <thead>
                             <tr>
                                 <th>Nombre</th>
-                                <th>Vida Util</th>
+                                <th>Km Cambio</th>
                                 <th>Cantidad</th>
                                 <th>Acción</th>
 
@@ -98,7 +98,7 @@
                         <a href="{{ route('Revisiones/nuevo', ['Placa' =>$vehiculo->placa]) }}" class="btn btn-primary">Nuevo</a>
                         <a href="{{ route('Revisiones/existente', ['Placa' =>$vehiculo->placa]) }}" class="btn btn-primary">Existente</a>
                         <br><br><br>
-                        <table class="table table-condensed table-striped table-bordered">
+                        <table class="table table-condensed table-striped table-bordered" >
                             <thead>
                             <tr>
                                 <th>Descripcion</th>
@@ -109,25 +109,31 @@
                                 <th>Acción</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                             @foreach($revisiones as $revision)
                                 @if($revision->estado == 1 || $revision->estado == 3)
-                                    <tr>
-                                        <td>{{ $revision->nombre }}</td>
+                                    <tr >
+                                        <td style="  max-width: 200px;
+                                            overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                    white-space: nowrap;">{{ $revision->nombre }}</td>
                                         <td>{{ $revision->km_revision}}</td>
-                                        <td>{{ $revision->detalle}}</td>
+                                        <td style="  max-width: 200px;
+                                            overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                    white-space: nowrap;" >{{ $revision->detalle}}</td>
 
                                         @if($revision->km_revision <= $vehiculo->km_total)
                                             @if($revision->estado == 3)
-                                                <td>{{$revision->updated_at}}</td>
+                                                <td><?php echo date("d-m-Y",strtotime($revision->updated_at)); ?></td>
                                                 <td>Pendiente (Correcion)</td>
                                                 @else
-                                                <td>{{$revision->updated_at}}</td>
+                                                <td><?php echo date("d-m-Y",strtotime($revision->updated_at)); ?></td>
                                                 <td>Pendiente</td>
                                             @endif
 
                                         @elseif($revision->km_revision > $vehiculo->km_total)
-                                            <td>{{$revision->updated_at}}</td>
+                                            <td><?php echo date("d-m-Y",strtotime($revision->updated_at)); ?></td>
                                             <td>Programada</td>
                                         @endif
                                         <td>

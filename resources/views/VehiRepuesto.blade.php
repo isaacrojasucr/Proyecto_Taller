@@ -14,7 +14,7 @@
                 <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Vida Util</th>
+                    <th>Km Cambio</th>
                     <th>Cantidad</th>
                     <th>Acción</th>
 

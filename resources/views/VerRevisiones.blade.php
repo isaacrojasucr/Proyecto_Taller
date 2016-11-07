@@ -19,9 +19,15 @@
                 <tbody>
                 @foreach($revisiones as $revision)
                     <tr>
-                        <td>{{ $revision->nombre }}</td>
+                        <td style="  max-width: 200px;
+                                            overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                    white-space: nowrap;">{{ $revision->nombre }}</td>
                         <td>{{ $revision->km_revision}}</td>
-                        <td>{{ $revision->detalle}}</td>
+                        <td style="  max-width: 200px;
+                                            overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                    white-space: nowrap;">{{ $revision->detalle}}</td>
 
 
                         @if($revision->estado == 1 || $revision->estado == 3)

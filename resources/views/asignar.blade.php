@@ -21,7 +21,8 @@
                     <div class="form-group">
                         {!! Form::label('modelo', 'Repuesto') !!}
                         <br>
-                        {!! Form::select('opcion', array('0' => 'Nuevo', '1' => 'Existente') ,null, ['class' => 'form-control']) !!}
+                        {{ Form::radio('opcion', 0, true, ['class' => 'field']) }} Nuevo<br>
+                        {{ Form::radio('opcion', 1, false, ['class' => 'field']) }} Existente
                     </div>
                     <br>
                     <br>
